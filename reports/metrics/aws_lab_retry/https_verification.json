@@ -1,0 +1,588 @@
+{
+  "checked_at_utc": "2026-10-03T22:29:18.229659+00:00",
+  "base_url": "https://no-047d6d91a2864b999392c73de09a6906.ecs.us-east-1.on.aws",
+  "tls_certificate_validation": true,
+  "dns_resolution": "Google DNS 8.8.8.8; curl --resolve to 52.7.150.79; hostname/SNI and certificate validation retained",
+  "requests": {
+    "health": {
+      "status": 200,
+      "curl_exit": 0,
+      "body": {
+        "status": "healthy",
+        "service": "novatel-churn-api",
+        "threshold": 0.45,
+        "model_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d"
+      },
+      "error": ""
+    },
+    "predict": {
+      "status": 200,
+      "curl_exit": 0,
+      "body": {
+        "customer_id": "NT-000001",
+        "churn_probability": 0.2293133254429826,
+        "churn_prediction": 0
+      },
+      "error": ""
+    },
+    "batch": {
+      "status": 200,
+      "curl_exit": 0,
+      "body": [
+        {
+          "customer_id": "NT-000001",
+          "churn_probability": 0.2293133254429826,
+          "churn_prediction": 0
+        },
+        {
+          "customer_id": "NT-000002",
+          "churn_probability": 0.4967532710554266,
+          "churn_prediction": 1
+        }
+      ],
+      "error": ""
+    },
+    "metrics": {
+      "status": 200,
+      "curl_exit": 0,
+      "body": "# HELP churn_predictions_total Successful predictions\n# TYPE churn_predictions_total counter\nchurn_predictions_total{class=\"0\"} 2.0\nchurn_predictions_total{class=\"1\"} 1.0\n# HELP churn_predictions_created Successful predictions\n# TYPE churn_predictions_created gauge\nchurn_predictions_created{class=\"0\"} 1.791066559507416e+09\nchurn_predictions_created{class=\"1\"} 1.7910665599113376e+09\n# HELP churn_prediction_latency_seconds Inference call latency\n# TYPE churn_prediction_latency_seconds histogram\nchurn_prediction_latency_seconds_bucket{le=\"0.005\"} 0.0\nchurn_prediction_latency_seconds_bucket{le=\"0.01\"} 1.0\nchurn_prediction_latency_seconds_bucket{le=\"0.025\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"0.05\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"0.075\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"0.1\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"0.25\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"0.5\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"0.75\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"1.0\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"2.5\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"5.0\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"7.5\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"10.0\"} 2.0\nchurn_prediction_latency_seconds_bucket{le=\"+Inf\"} 2.0\nchurn_prediction_latency_seconds_count 2.0\nchurn_prediction_latency_seconds_sum 0.03229208300001574\n# HELP churn_prediction_latency_seconds_created Inference call latency\n# TYPE churn_prediction_latency_seconds_created gauge\nchurn_prediction_latency_seconds_created 1.791066446152978e+09\n# HELP churn_prediction_errors_total Inference failures\n# TYPE churn_prediction_errors_total counter\nchurn_prediction_errors_total 0.0\n# HELP churn_prediction_errors_created Inference failures\n# TYPE churn_prediction_errors_created gauge\nchurn_prediction_errors_created 1.791066446153042e+09\n# HELP churn_input_payment_delay Observed payment delay days\n# TYPE churn_input_payment_delay histogram\nchurn_input_payment_delay_bucket{le=\"0.0\"} 0.0\nchurn_input_payment_delay_bucket{le=\"5.0\"} 3.0\nchurn_input_payment_delay_bucket{le=\"10.0\"} 3.0\nchurn_input_payment_delay_bucket{le=\"15.0\"} 3.0\nchurn_input_payment_delay_bucket{le=\"30.0\"} 3.0\nchurn_input_payment_delay_bucket{le=\"60.0\"} 3.0\nchurn_input_payment_delay_bucket{le=\"120.0\"} 3.0\nchurn_input_payment_delay_bucket{le=\"+Inf\"} 3.0\nchurn_input_payment_delay_count 3.0\nchurn_input_payment_delay_sum 5.0\n# HELP churn_input_payment_delay_created Ob",
+      "error": ""
+    },
+    "openapi": {
+      "status": 200,
+      "curl_exit": 0,
+      "body": {
+        "openapi": "3.1.0",
+        "info": {
+          "title": "NovaTel Churn API",
+          "version": "2.0.0"
+        },
+        "paths": {
+          "/health": {
+            "get": {
+              "summary": "Health",
+              "description": "Return readiness only after the model loaded successfully.",
+              "operationId": "health_health_get",
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "additionalProperties": true,
+                        "type": "object",
+                        "title": "Response Health Health Get"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/predict": {
+            "post": {
+              "summary": "Predict",
+              "description": "Return one prediction using persisted preprocessing and classifier.",
+              "operationId": "predict_predict_post",
+              "requestBody": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/CustomerInput"
+                    }
+                  }
+                },
+                "required": true
+              },
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/PredictionOutput"
+                      }
+                    }
+                  }
+                },
+                "422": {
+                  "description": "Validation Error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/HTTPValidationError"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/predict/batch": {
+            "post": {
+              "summary": "Predict Json Batch",
+              "description": "Infer a JSON list of complete feature records, as requested by the guide.",
+              "operationId": "predict_json_batch_predict_batch_post",
+              "requestBody": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "items": {
+                        "$ref": "#/components/schemas/CustomerInput"
+                      },
+                      "type": "array",
+                      "maxItems": 50000,
+                      "minItems": 1,
+                      "title": "Customers"
+                    }
+                  }
+                },
+                "required": true
+              },
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "items": {
+                          "$ref": "#/components/schemas/PredictionOutput"
+                        },
+                        "type": "array",
+                        "title": "Response Predict Json Batch Predict Batch Post"
+                      }
+                    }
+                  }
+                },
+                "422": {
+                  "description": "Validation Error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/HTTPValidationError"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/predict/batch/csv": {
+            "post": {
+              "summary": "Predict Batch",
+              "description": "Predict a validated UTF-8 CSV, capped at 50000 rows and 20 MiB.",
+              "operationId": "predict_batch_predict_batch_csv_post",
+              "requestBody": {
+                "content": {
+                  "multipart/form-data": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Body_predict_batch_predict_batch_csv_post"
+                    }
+                  }
+                },
+                "required": true
+              },
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "items": {
+                          "$ref": "#/components/schemas/PredictionOutput"
+                        },
+                        "type": "array",
+                        "title": "Response Predict Batch Predict Batch Csv Post"
+                      }
+                    }
+                  }
+                },
+                "422": {
+                  "description": "Validation Error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/HTTPValidationError"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/metrics": {
+            "get": {
+              "summary": "Metrics",
+              "description": "Expose process-local counters and histograms in Prometheus format.",
+              "operationId": "metrics_metrics_get",
+              "responses": {
+                "200": {
+                  "description": "Successful Response",
+                  "content": {
+                    "application/json": {
+                      "schema": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "components": {
+          "schemas": {
+            "Body_predict_batch_predict_batch_csv_post": {
+              "properties": {
+                "file": {
+                  "type": "string",
+                  "contentMediaType": "application/octet-stream",
+                  "title": "File"
+                }
+              },
+              "type": "object",
+              "required": [
+                "file"
+              ],
+              "title": "Body_predict_batch_predict_batch_csv_post"
+            },
+            "CustomerInput": {
+              "properties": {
+                "customer_id": {
+                  "type": "string",
+                  "maxLength": 100,
+                  "minLength": 1,
+                  "title": "Customer Id"
+                },
+                "age": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0.0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Age"
+                },
+                "tenure_months": {
+                  "type": "integer",
+                  "minimum": 0.0,
+                  "title": "Tenure Months"
+                },
+                "monthly_fee": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "exclusiveMinimum": 0.0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Monthly Fee"
+                },
+                "total_spent": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0.0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Total Spent"
+                },
+                "support_calls": {
+                  "type": "integer",
+                  "minimum": 0.0,
+                  "title": "Support Calls"
+                },
+                "complaints": {
+                  "type": "integer",
+                  "minimum": 0.0,
+                  "title": "Complaints"
+                },
+                "last_payment_delay": {
+                  "type": "integer",
+                  "minimum": 0.0,
+                  "title": "Last Payment Delay"
+                },
+                "digital_usage_score": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "maximum": 100.0,
+                      "minimum": 0.0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Digital Usage Score"
+                },
+                "marketing_score": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "maximum": 100.0,
+                      "minimum": 0.0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Marketing Score"
+                },
+                "preferred_contact_hour": {
+                  "type": "integer",
+                  "maximum": 23.0,
+                  "minimum": 0.0,
+                  "title": "Preferred Contact Hour"
+                },
+                "gender": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "Femenino",
+                        "Masculino"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Gender"
+                },
+                "region": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "Lima",
+                        "Norte",
+                        "Centro",
+                        "Sur",
+                        "Oriente"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Region"
+                },
+                "customer_segment": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "Masivo",
+                        "Joven digital",
+                        "Familia",
+                        "Premium"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Customer Segment"
+                },
+                "contract_type": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "Mensual",
+                        "Anual",
+                        "Bianual"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Contract Type"
+                },
+                "internet_service": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "Fibra",
+                        "DSL",
+                        "Sin internet"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Internet Service"
+                },
+                "tv_service": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "Sí",
+                        "No"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Tv Service"
+                },
+                "streaming_service": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "Sí",
+                        "No"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Streaming Service"
+                },
+                "payment_method": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "Tarjeta",
+                        "Débito automático",
+                        "Transferencia",
+                        "Efectivo"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Payment Method"
+                }
+              },
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "customer_id",
+                "age",
+                "tenure_months",
+                "monthly_fee",
+                "total_spent",
+                "support_calls",
+                "complaints",
+                "last_payment_delay",
+                "digital_usage_score",
+                "marketing_score",
+                "preferred_contact_hour",
+                "gender",
+                "region",
+                "customer_segment",
+                "contract_type",
+                "internet_service",
+                "tv_service",
+                "streaming_service",
+                "payment_method"
+              ],
+              "title": "CustomerInput",
+              "description": "All features are required; explicit nulls use persisted imputers."
+            },
+            "HTTPValidationError": {
+              "properties": {
+                "detail": {
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationError"
+                  },
+                  "type": "array",
+                  "title": "Detail"
+                }
+              },
+              "type": "object",
+              "title": "HTTPValidationError"
+            },
+            "PredictionOutput": {
+              "properties": {
+                "customer_id": {
+                  "type": "string",
+                  "title": "Customer Id"
+                },
+                "churn_probability": {
+                  "type": "number",
+                  "maximum": 1.0,
+                  "minimum": 0.0,
+                  "title": "Churn Probability"
+                },
+                "churn_prediction": {
+                  "type": "integer",
+                  "enum": [
+                    0,
+                    1
+                  ],
+                  "title": "Churn Prediction"
+                }
+              },
+              "type": "object",
+              "required": [
+                "customer_id",
+                "churn_probability",
+                "churn_prediction"
+              ],
+              "title": "PredictionOutput",
+              "description": "Prediction at configured threshold; no ground-truth claim."
+            },
+            "ValidationError": {
+              "properties": {
+                "loc": {
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "integer"
+                      }
+                    ]
+                  },
+                  "type": "array",
+                  "title": "Location"
+                },
+                "msg": {
+                  "type": "string",
+                  "title": "Message"
+                },
+                "type": {
+                  "type": "string",
+                  "title": "Error Type"
+                },
+                "input": {
+                  "title": "Input"
+                },
+                "ctx": {
+                  "type": "object",
+                  "title": "Context"
+                }
+              },
+              "type": "object",
+              "required": [
+                "loc",
+                "msg",
+                "type"
+              ],
+              "title": "ValidationError"
+            }
+          }
+        }
+      },
+      "error": ""
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "source_sha256": "85eeb69c3983ca094075842d3affa6a636fd0a4741bfa8f92c8ab631bef84b3b",
+  "events": [
+    {
+      "eventTime": "2026-10-03T21:32:24Z",
+      "eventID": "ade7797b-3fca-43a5-9cc2-e78b1d6bfd5d",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DeleteSecurityGroup",
+      "errorCode": null,
+      "errorMessage": null,
+      "requestParameters": {
+        "groupId": "sg-0b0cf06153c5c8cf6"
+      },
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSGateway",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:32:15Z",
+      "eventID": "5bb3abc5-e42f-446b-869a-569515334a10",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DeleteSecurityGroup",
+      "errorCode": null,
+      "errorMessage": null,
+      "requestParameters": {
+        "groupId": "sg-026e014a1d87e7634"
+      },
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSWebService",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:32:14Z",
+      "eventID": "d24bb649-53d4-4b03-a453-545c303a6a21",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DeleteSecurityGroup",
+      "errorCode": "Client.DependencyViolation",
+      "errorMessage": "resource sg-0b0cf06153c5c8cf6 has a dependent object",
+      "requestParameters": {
+        "groupId": "sg-0b0cf06153c5c8cf6"
+      },
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSGateway",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:32:13Z",
+      "eventID": "5fb9072f-26e0-431e-9509-e34cde94db7f",
+      "eventSource": "monitoring.amazonaws.com",
+      "eventName": "DeleteAlarms",
+      "errorCode": "AccessDenied",
+      "errorMessage": "User: arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSWebService is not authorized to perform: cloudwatch:DeleteAlarms on resource: arn:aws:cloudwatch:us-east-1:345485442361:alarm:novatel-lab/novatel-churn-api/RollbackAlarm because no identity-based policy allows the cloudwatch:DeleteAlarms action",
+      "requestParameters": null,
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSWebService",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:31:14Z",
+      "eventID": "4ff7626f-09dd-49a8-b66b-07d28051c466",
+      "eventSource": "elasticloadbalancing.amazonaws.com",
+      "eventName": "CreateLoadBalancer",
+      "errorCode": "AccessDenied",
+      "errorMessage": "An unknown error occurred",
+      "requestParameters": {
+        "name": "ecs-express-gateway-alb-d996c132",
+        "subnets": [
+          "subnet-01e9e30cd3ff2b070",
+          "subnet-0239f97a016fa80af"
+        ],
+        "securityGroups": [
+          "sg-0b0cf06153c5c8cf6"
+        ],
+        "scheme": "internet-facing",
+        "tags": [
+          {
+            "key": "AmazonECSManaged",
+            "value": "true"
+          },
+          {
+            "key": "Project",
+            "value": "NovaTel"
+          },
+          {
+            "key": "Purpose",
+            "value": "Curso2Lab"
+          }
+        ],
+        "type": "application",
+        "ipAddressType": "ipv4"
+      },
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSGateway",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:31:14Z",
+      "eventID": "e810ecd1-146a-494e-8915-3d36166bdb4f",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreateServiceLinkedRole",
+      "errorCode": null,
+      "errorMessage": null,
+      "requestParameters": {
+        "aWSServiceName": "elasticloadbalancing.amazonaws.com",
+        "description": "Allows ELB to call AWS services on your behalf."
+      },
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSGateway",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:31:11Z",
+      "eventID": "238bc263-f03c-4bab-aff2-72e1addf8164",
+      "eventSource": "logs.amazonaws.com",
+      "eventName": "CreateLogGroup",
+      "errorCode": null,
+      "errorMessage": null,
+      "requestParameters": {
+        "logGroupName": "/aws/ecs/novatel-lab/novatel-churn-api-a899",
+        "tags": {
+          "Project": "NovaTel",
+          "AmazonECSManaged": "true",
+          "Purpose": "Curso2Lab"
+        }
+      },
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSWebService",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:31:11Z",
+      "eventID": "644c88e8-af5e-4fba-b433-231bd4039992",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreateServiceLinkedRole",
+      "errorCode": null,
+      "errorMessage": null,
+      "requestParameters": {
+        "aWSServiceName": "ecs.application-autoscaling.amazonaws.com"
+      },
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSWebService",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:31:11Z",
+      "eventID": "c6e52b6a-8e77-4511-a95c-19f74d1a62bb",
+      "eventSource": "autoscaling.amazonaws.com",
+      "eventName": "RegisterScalableTarget",
+      "errorCode": "ValidationException",
+      "errorMessage": "Unable to assume IAM role: arn:aws:iam::345485442361:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService",
+      "requestParameters": {
+        "serviceNamespace": "ecs",
+        "resourceId": "service/novatel-lab/novatel-churn-api",
+        "scalableDimension": "ecs:service:DesiredCount",
+        "minCapacity": 1,
+        "maxCapacity": 1,
+        "tags": {
+          "Project": "NovaTel",
+          "Purpose": "Curso2Lab",
+          "AmazonECSManaged": "true"
+        }
+      },
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSWebService",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:31:11Z",
+      "eventID": "d33ca84c-0649-462e-a512-1468416acbe7",
+      "eventSource": "ecs.amazonaws.com",
+      "eventName": "UpdateService",
+      "errorCode": "AccessDenied",
+      "errorMessage": "User: arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSWebService is not authorized to perform: ecs:UpdateService on resource: arn:aws:ecs:us-east-1:345485442361:service/novatel-lab/novatel-churn-api because no identity-based policy allows the ecs:UpdateService action",
+      "requestParameters": null,
+      "principal_arn": "arn:aws:sts::345485442361:assumed-role/ecsInfrastructureRoleForExpressServices/ECSWebService",
+      "issuer_arn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices"
+    },
+    {
+      "eventTime": "2026-10-03T21:31:03Z",
+      "eventID": "c5ff803e-005e-4efa-a2cd-38b036329efe",
+      "eventSource": "ecs.amazonaws.com",
+      "eventName": "CreateExpressGatewayService",
+      "errorCode": null,
+      "errorMessage": null,
+      "requestParameters": {
+        "executionRoleArn": "arn:aws:iam::345485442361:role/ecsTaskExecutionRole",
+        "infrastructureRoleArn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices",
+        "serviceName": "novatel-churn-api",
+        "cluster": "novatel-lab",
+        "healthCheckPath": "/health",
+        "primaryContainer": {
+          "image": "345485442361.dkr.ecr.us-east-1.amazonaws.com/novatel-churn-api:lab-e57f06d",
+          "containerPort": 8000
+        },
+        "networkConfiguration": {
+          "subnets": [
+            "subnet-01e9e30cd3ff2b070",
+            "subnet-0239f97a016fa80af"
+          ]
+        },
+        "cpu": "256",
+        "memory": "1024",
+        "scalingTarget": {
+          "minTaskCount": 1,
+          "maxTaskCount": 1
+        },
+        "tags": [
+          {
+            "key": "Project",
+            "value": "NovaTel"
+          },
+          {
+            "key": "Purpose",
+            "value": "Curso2Lab"
+          }
+        ],
+        "dryrun": false
+      },
+      "principal_arn": "arn:aws:iam::345485442361:user/dmc_pamelaf_s",
+      "issuer_arn": null
+    }
+  ]
+}

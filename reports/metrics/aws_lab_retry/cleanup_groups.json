@@ -1,0 +1,182 @@
+{
+    "SecurityGroups": [
+        {
+            "GroupId": "sg-00cd6568e9995797e",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Placeholder rule to reserve capacity",
+                            "UserId": "345485442361",
+                            "GroupId": "sg-00cd6568e9995797e"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 8000,
+                    "ToPort": 8000,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "Egress Rule to ECS Service",
+                            "UserId": "345485442361",
+                            "GroupId": "sg-02b021826cefe3ada"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "AmazonECSManaged",
+                    "Value": "true"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "Curso2Lab"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "NovaTel"
+                }
+            ],
+            "VpcId": "vpc-02df7948b4ca8def5",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:345485442361:security-group/sg-00cd6568e9995797e",
+            "OwnerId": "345485442361",
+            "GroupName": "ecs-express-gateway-alb-sg-d8d081ee-48f1-645e-1bfd-361e16ac7ff2",
+            "Description": "ECS Express Gateway security group - allows HTTP/HTTPS inbound with managed outbound rules",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 80,
+                    "ToPort": 80,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "HTTP access from anywhere (IPv4)",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [
+                        {
+                            "Description": "HTTP access from anywhere (IPv6)",
+                            "CidrIpv6": "::/0"
+                        }
+                    ],
+                    "PrefixListIds": []
+                },
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 443,
+                    "ToPort": 443,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "Description": "HTTPS access from anywhere (IPv4)",
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [
+                        {
+                            "Description": "HTTPS access from anywhere (IPv6)",
+                            "CidrIpv6": "::/0"
+                        }
+                    ],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-0f661c66c66231771",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "VpcId": "vpc-02df7948b4ca8def5",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:345485442361:security-group/sg-0f661c66c66231771",
+            "OwnerId": "345485442361",
+            "GroupName": "default",
+            "Description": "default VPC security group",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [
+                        {
+                            "UserId": "345485442361",
+                            "GroupId": "sg-0f661c66c66231771"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        },
+        {
+            "GroupId": "sg-02b021826cefe3ada",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Project",
+                    "Value": "NovaTel"
+                },
+                {
+                    "Key": "AmazonECSManaged",
+                    "Value": "true"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "Curso2Lab"
+                }
+            ],
+            "VpcId": "vpc-02df7948b4ca8def5",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:345485442361:security-group/sg-02b021826cefe3ada",
+            "OwnerId": "345485442361",
+            "GroupName": "novatel-lab-novatel-churn-api-vpc-02df7948b4ca8def5",
+            "Description": "Security group for ECS service: arn:aws:ecs:us-east-1:345485442361:service/novatel-lab/novatel-churn-api",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 8000,
+                    "ToPort": 8000,
+                    "UserIdGroupPairs": [
+                        {
+                            "UserId": "345485442361",
+                            "GroupId": "sg-00cd6568e9995797e"
+                        }
+                    ],
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+{"error": "\naws: [ERROR]: An error occurred (AccessDeniedException) when calling the DeregisterTaskDefinition operation: User: arn:aws:iam::345485442361:user/dmc_pamelaf_s is not authorized to perform: ecs:DeregisterTaskDefinition on resource: * because no identity-based policy allows the ecs:DeregisterTaskDefinition action\n"}

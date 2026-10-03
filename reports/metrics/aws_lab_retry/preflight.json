@@ -1,0 +1,18 @@
+{
+  "time_utc": "2026-10-03T22:21:57.839611+00:00",
+  "single_retry": true,
+  "budget_usd": 1,
+  "repo_preexisting": false,
+  "cluster_preflight": "INACTIVE",
+  "security_groups_preflight": [
+    "sg-0f661c66c66231771 (default)"
+  ],
+  "rollback_alarm_preflight": "absent",
+  "unverified": [
+    "ALB",
+    "CloudWatch logs",
+    "Auto Scaling targets"
+  ],
+  "reason": "read permission denied",
+  "configuration": "256 CPU,1024 MiB,min=max=1,no NAT"
+}

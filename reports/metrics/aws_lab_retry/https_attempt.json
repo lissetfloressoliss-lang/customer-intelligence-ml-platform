@@ -1,0 +1,5 @@
+{
+  "error": "<urlopen error [Errno 11001] getaddrinfo failed>",
+  "url": "https://no-047d6d91a2864b999392c73de09a6906.ecs.us-east-1.on.aws/health",
+  "checked_at": "2026-10-03T22:24:37.310826+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "UpdateOnlyNovaTelLabService",
+      "Effect": "Allow",
+      "Action": "ecs:UpdateService",
+      "Resource": "arn:aws:ecs:us-east-1:345485442361:service/novatel-lab/novatel-churn-api",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "us-east-1"
+        }
+      }
+    },
+    {
+      "Sid": "DeleteOnlyNovaTelRollbackAlarm",
+      "Effect": "Allow",
+      "Action": "cloudwatch:DeleteAlarms",
+      "Resource": "arn:aws:cloudwatch:us-east-1:345485442361:alarm:novatel-lab/novatel-churn-api/RollbackAlarm",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "us-east-1"
+        }
+      }
+    }
+  ]
+}

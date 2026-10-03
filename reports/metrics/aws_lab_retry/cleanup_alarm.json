@@ -1,0 +1,178 @@
+{
+    "MetricAlarms": [
+        {
+            "AlarmName": "novatel-lab/novatel-churn-api/RollbackAlarm",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:345485442361:alarm:novatel-lab/novatel-churn-api/RollbackAlarm",
+            "AlarmDescription": "Rate of 4XX and 5XX errors",
+            "AlarmConfigurationUpdatedTimestamp": "2026-10-03T17:26:30.887000-05:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: 5 out of the last 5 datapoints were not greater than the threshold (1.0). The most recent datapoints which not crossed the threshold: [0.0 (03/10/26 22:23:00), 0.0 (03/10/26 22:22:00), 0.0 (03/10/26 22:21:00), 0.0 (03/10/26 22:20:00), 0.0 (03/10/26 22:19:00)] (minimum 1 datapoint for ALARM -> OK transition).",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-10-03T22:26:55.807+0000\",\"startDate\":\"2026-10-03T22:19:00.000+0000\",\"period\":60,\"recentDatapoints\":[0.0,0.0,0.0,0.0,0.0],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-03T22:23:00.000+0000\",\"value\":0.0}]}",
+            "StateUpdatedTimestamp": "2026-10-03T17:26:55.810000-05:00",
+            "Dimensions": [],
+            "EvaluationPeriods": 5,
+            "DatapointsToAlarm": 5,
+            "Threshold": 1.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "TreatMissingData": "notBreaching",
+            "Metrics": [
+                {
+                    "Id": "m0_4xx",
+                    "MetricStat": {
+                        "Metric": {
+                            "Namespace": "AWS/ApplicationELB",
+                            "MetricName": "HTTPCode_Target_4XX_Count",
+                            "Dimensions": [
+                                {
+                                    "Name": "TargetGroup",
+                                    "Value": "targetgroup/ecs-gateway-tg-8b5bbc6883d093e60/096e09b8d5ef5edd"
+                                },
+                                {
+                                    "Name": "LoadBalancer",
+                                    "Value": "app/ecs-express-gateway-alb-b86e3d52/77929d5418956531"
+                                }
+                            ]
+                        },
+                        "Period": 60,
+                        "Stat": "Sum"
+                    },
+                    "ReturnData": false
+                },
+                {
+                    "Id": "m0_5xx",
+                    "MetricStat": {
+                        "Metric": {
+                            "Namespace": "AWS/ApplicationELB",
+                            "MetricName": "HTTPCode_Target_5XX_Count",
+                            "Dimensions": [
+                                {
+                                    "Name": "TargetGroup",
+                                    "Value": "targetgroup/ecs-gateway-tg-8b5bbc6883d093e60/096e09b8d5ef5edd"
+                                },
+                                {
+                                    "Name": "LoadBalancer",
+                                    "Value": "app/ecs-express-gateway-alb-b86e3d52/77929d5418956531"
+                                }
+                            ]
+                        },
+                        "Period": 60,
+                        "Stat": "Sum"
+                    },
+                    "ReturnData": false
+                },
+                {
+                    "Id": "m0_total",
+                    "MetricStat": {
+                        "Metric": {
+                            "Namespace": "AWS/ApplicationELB",
+                            "MetricName": "RequestCount",
+                            "Dimensions": [
+                                {
+                                    "Name": "TargetGroup",
+                                    "Value": "targetgroup/ecs-gateway-tg-8b5bbc6883d093e60/096e09b8d5ef5edd"
+                                },
+                                {
+                                    "Name": "LoadBalancer",
+                                    "Value": "app/ecs-express-gateway-alb-b86e3d52/77929d5418956531"
+                                }
+                            ]
+                        },
+                        "Period": 60,
+                        "Stat": "Sum"
+                    },
+                    "ReturnData": false
+                },
+                {
+                    "Id": "em0",
+                    "Expression": "100 * (IF(m0_4xx < 5, 0, m0_4xx) + m0_5xx) / FILL(m0_total, 1)",
+                    "Label": "Sum of 4XX and 5XX errors percentage for arn:aws:elasticloadbalancing:us-east-1:345485442361:targetgroup/ecs-gateway-tg-8b5bbc6883d093e60/096e09b8d5ef5edd",
+                    "ReturnData": false
+                },
+                {
+                    "Id": "m1_4xx",
+                    "MetricStat": {
+                        "Metric": {
+                            "Namespace": "AWS/ApplicationELB",
+                            "MetricName": "HTTPCode_Target_4XX_Count",
+                            "Dimensions": [
+                                {
+                                    "Name": "TargetGroup",
+                                    "Value": "targetgroup/ecs-gateway-tg-c26da0776b440dcbd/3916cf9329e750c7"
+                                },
+                                {
+                                    "Name": "LoadBalancer",
+                                    "Value": "app/ecs-express-gateway-alb-b86e3d52/77929d5418956531"
+                                }
+                            ]
+                        },
+                        "Period": 60,
+                        "Stat": "Sum"
+                    },
+                    "ReturnData": false
+                },
+                {
+                    "Id": "m1_5xx",
+                    "MetricStat": {
+                        "Metric": {
+                            "Namespace": "AWS/ApplicationELB",
+                            "MetricName": "HTTPCode_Target_5XX_Count",
+                            "Dimensions": [
+                                {
+                                    "Name": "TargetGroup",
+                                    "Value": "targetgroup/ecs-gateway-tg-c26da0776b440dcbd/3916cf9329e750c7"
+                                },
+                                {
+                                    "Name": "LoadBalancer",
+                                    "Value": "app/ecs-express-gateway-alb-b86e3d52/77929d5418956531"
+                                }
+                            ]
+                        },
+                        "Period": 60,
+                        "Stat": "Sum"
+                    },
+                    "ReturnData": false
+                },
+                {
+                    "Id": "m1_total",
+                    "MetricStat": {
+                        "Metric": {
+                            "Namespace": "AWS/ApplicationELB",
+                            "MetricName": "RequestCount",
+                            "Dimensions": [
+                                {
+                                    "Name": "TargetGroup",
+                                    "Value": "targetgroup/ecs-gateway-tg-c26da0776b440dcbd/3916cf9329e750c7"
+                                },
+                                {
+                                    "Name": "LoadBalancer",
+                                    "Value": "app/ecs-express-gateway-alb-b86e3d52/77929d5418956531"
+                                }
+                            ]
+                        },
+                        "Period": 60,
+                        "Stat": "Sum"
+                    },
+                    "ReturnData": false
+                },
+                {
+                    "Id": "em1",
+                    "Expression": "100 * (IF(m1_4xx < 5, 0, m1_4xx) + m1_5xx) / FILL(m1_total, 1)",
+                    "Label": "Sum of 4XX and 5XX errors percentage for arn:aws:elasticloadbalancing:us-east-1:345485442361:targetgroup/ecs-gateway-tg-c26da0776b440dcbd/3916cf9329e750c7",
+                    "ReturnData": false
+                },
+                {
+                    "Id": "e",
+                    "Expression": "MAX([em0, em1])",
+                    "Label": "Sum of 4XX and 5XX errors percentage",
+                    "ReturnData": true
+                }
+            ],
+            "StateTransitionedTimestamp": "2026-10-03T17:26:55.810000-05:00"
+        }
+    ],
+    "CompositeAlarms": []
+}

@@ -1,0 +1,10 @@
+{
+    "repository": {
+        "repositoryArn": "arn:aws:ecr:us-east-1:345485442361:repository/novatel-churn-api",
+        "registryId": "345485442361",
+        "repositoryName": "novatel-churn-api",
+        "repositoryUri": "345485442361.dkr.ecr.us-east-1.amazonaws.com/novatel-churn-api",
+        "createdAt": "2026-10-03T17:21:25.570000-05:00",
+        "imageTagMutability": "IMMUTABLE"
+    }
+}

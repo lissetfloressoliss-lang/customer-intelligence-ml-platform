@@ -1,0 +1,99 @@
+{
+    "services": [
+        {
+            "serviceArn": "arn:aws:ecs:us-east-1:345485442361:service/novatel-lab/novatel-churn-api",
+            "serviceName": "novatel-churn-api",
+            "clusterArn": "arn:aws:ecs:us-east-1:345485442361:cluster/novatel-lab",
+            "status": "ACTIVE",
+            "desiredCount": 1,
+            "runningCount": 1,
+            "pendingCount": 0,
+            "deploymentConfiguration": {
+                "deploymentCircuitBreaker": {
+                    "enable": true,
+                    "rollback": true
+                },
+                "maximumPercent": 200,
+                "minimumHealthyPercent": 100,
+                "strategy": "CANARY",
+                "bakeTimeInMinutes": 3,
+                "canaryConfiguration": {
+                    "canaryPercent": 5.0,
+                    "canaryBakeTimeInMinutes": 3
+                }
+            },
+            "deployments": [
+                {
+                    "id": "ecs-svc/5533679603527821708",
+                    "status": "PRIMARY",
+                    "taskDefinition": "arn:aws:ecs:us-east-1:345485442361:task-definition/novatel-lab-novatel-churn-api:2",
+                    "desiredCount": 1,
+                    "pendingCount": 0,
+                    "runningCount": 1,
+                    "failedTasks": 0,
+                    "createdAt": "2026-10-03T17:22:20.935000-05:00",
+                    "updatedAt": "2026-10-03T17:28:03.888000-05:00",
+                    "launchType": "FARGATE",
+                    "platformVersion": "1.4.0",
+                    "platformFamily": "Linux",
+                    "networkConfiguration": {
+                        "awsvpcConfiguration": {
+                            "subnets": [
+                                "subnet-01e9e30cd3ff2b070",
+                                "subnet-0239f97a016fa80af"
+                            ],
+                            "securityGroups": [],
+                            "assignPublicIp": "ENABLED"
+                        }
+                    },
+                    "rolloutState": "COMPLETED",
+                    "rolloutStateReason": "ECS deployment ecs-svc/5533679603527821708 completed."
+                }
+            ],
+            "events": [
+                {
+                    "id": "78b5d661-8b6c-40f7-918a-2aaf3ed7e114",
+                    "createdAt": "2026-10-03T17:28:03.895000-05:00",
+                    "message": "(service novatel-churn-api) has reached a steady state."
+                },
+                {
+                    "id": "c0eec891-273d-4316-b7e2-3a11027a689d",
+                    "createdAt": "2026-10-03T17:28:03.894000-05:00",
+                    "message": "(service novatel-churn-api) (deployment ecs-svc/5533679603527821708) deployment completed."
+                },
+                {
+                    "id": "3e2e339e-f80a-4597-91f7-4400308e05e5",
+                    "createdAt": "2026-10-03T17:27:22.829000-05:00",
+                    "message": "(service novatel-churn-api) registered 1 targets in (target-group arn:aws:elasticloadbalancing:us-east-1:345485442361:targetgroup/ecs-gateway-tg-c26da0776b440dcbd/3916cf9329e750c7)"
+                },
+                {
+                    "id": "e142a027-29dc-4da5-a011-ff8a90b2c79d",
+                    "createdAt": "2026-10-03T17:26:51.918000-05:00",
+                    "message": "(service novatel-churn-api) has started 1 tasks: (task 9ebef178260e4f7988246bd14ff7342b)."
+                }
+            ],
+            "createdAt": "2026-10-03T17:22:20.935000-05:00",
+            "currentServiceDeployment": "arn:aws:ecs:us-east-1:345485442361:service-deployment/novatel-lab/novatel-churn-api/ZXjdGeY7Zf8LzquSDFEyg",
+            "currentServiceRevisions": [
+                {
+                    "arn": "arn:aws:ecs:us-east-1:345485442361:service-revision/novatel-lab/novatel-churn-api/5533679603527821708",
+                    "requestedTaskCount": 1,
+                    "runningTaskCount": 1,
+                    "pendingTaskCount": 0
+                }
+            ],
+            "healthCheckGracePeriodSeconds": 0,
+            "schedulingStrategy": "REPLICA",
+            "deploymentController": {
+                "type": "ECS"
+            },
+            "createdBy": "arn:aws:iam::345485442361:user/dmc_pamelaf_s",
+            "enableECSManagedTags": true,
+            "propagateTags": "SERVICE",
+            "enableExecuteCommand": false,
+            "availabilityZoneRebalancing": "ENABLED",
+            "resourceManagementType": "ECS"
+        }
+    ],
+    "failures": []
+}

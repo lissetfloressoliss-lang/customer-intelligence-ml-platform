@@ -1,0 +1,53 @@
+{
+    "service": {
+        "cluster": "arn:aws:ecs:us-east-1:345485442361:cluster/novatel-lab",
+        "serviceName": "novatel-churn-api",
+        "serviceArn": "arn:aws:ecs:us-east-1:345485442361:service/novatel-lab/novatel-churn-api",
+        "infrastructureRoleArn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices",
+        "status": {
+            "statusCode": "ACTIVE"
+        },
+        "activeConfigurations": [
+            {
+                "serviceRevisionArn": "arn:aws:ecs:us-east-1:345485442361:service-revision/novatel-lab/novatel-churn-api/5533679603527821708",
+                "executionRoleArn": "arn:aws:iam::345485442361:role/ecsTaskExecutionRole",
+                "cpu": "256",
+                "memory": "1024",
+                "networkConfiguration": {
+                    "securityGroups": [
+                        "sg-02b021826cefe3ada"
+                    ],
+                    "subnets": [
+                        "subnet-01e9e30cd3ff2b070",
+                        "subnet-0239f97a016fa80af"
+                    ]
+                },
+                "healthCheckPath": "/health",
+                "primaryContainer": {
+                    "image": "345485442361.dkr.ecr.us-east-1.amazonaws.com/novatel-churn-api:lab-e57f06d",
+                    "containerPort": 8000,
+                    "awsLogsConfiguration": {
+                        "logGroup": "/aws/ecs/novatel-lab/novatel-churn-api-3cf2",
+                        "logStreamPrefix": "ecs"
+                    },
+                    "environment": []
+                },
+                "scalingTarget": {
+                    "minTaskCount": 1,
+                    "maxTaskCount": 1,
+                    "autoScalingMetric": "AVERAGE_CPU",
+                    "autoScalingTargetValue": 60
+                },
+                "ingressPaths": [
+                    {
+                        "accessType": "PUBLIC",
+                        "endpoint": "no-047d6d91a2864b999392c73de09a6906.ecs.us-east-1.on.aws"
+                    }
+                ],
+                "createdAt": "2026-10-03T17:22:20.935000-05:00"
+            }
+        ],
+        "createdAt": "2026-10-03T17:22:20.935000-05:00",
+        "updatedAt": "2026-10-03T17:22:21.001000-05:00"
+    }
+}

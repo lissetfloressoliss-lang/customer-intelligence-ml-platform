@@ -1,0 +1,30 @@
+{
+    "cluster": {
+        "clusterArn": "arn:aws:ecs:us-east-1:345485442361:cluster/novatel-lab",
+        "clusterName": "novatel-lab",
+        "status": "ACTIVE",
+        "registeredContainerInstancesCount": 0,
+        "runningTasksCount": 0,
+        "pendingTasksCount": 0,
+        "activeServicesCount": 0,
+        "statistics": [],
+        "tags": [
+            {
+                "key": "Project",
+                "value": "NovaTel"
+            },
+            {
+                "key": "Purpose",
+                "value": "Curso2Lab"
+            }
+        ],
+        "settings": [
+            {
+                "name": "containerInsights",
+                "value": "disabled"
+            }
+        ],
+        "capacityProviders": [],
+        "defaultCapacityProviderStrategy": []
+    }
+}

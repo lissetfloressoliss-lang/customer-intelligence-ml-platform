@@ -1,0 +1,36 @@
+{
+  "time_utc": "2026-10-03T22:33:19.302671+00:00",
+  "single_retry": true,
+  "deployment_completed": true,
+  "cloud_https_verified": true,
+  "tls_certificate_validated": true,
+  "model_hash_verified": true,
+  "threshold": 0.45,
+  "individual_and_batch_predictions_verified": true,
+  "local_tests_repeated": false,
+  "permissions_expanded": false,
+  "account_plan_changed": false,
+  "budget_usd": 1,
+  "cost_estimate_usd": "Below 0.10 for short laboratory including provisioning/cleanup; actual invoice not available",
+  "cleanup": {
+    "ecr_deleted": true,
+    "cluster_inactive": true,
+    "running_tasks": 0,
+    "service": {
+      "statusCode": "DRAINING"
+    },
+    "security_groups": "awaiting Express cleanup",
+    "task_definition_revision_2": "DeregisterTaskDefinition denied",
+    "ALB_logs_autoscaling_inventory": "read access denied; full cleanup not yet verified",
+    "exclusive_security_group_ids": [
+      "sg-02b021826cefe3ada",
+      "sg-00cd6568e9995797e"
+    ],
+    "manual_group_cleanup": "see exclusive_security_group_cleanup.json"
+  },
+  "preserved": [
+    "default VPC/subnets/route/internet gateway/default SG",
+    "IAM execution/infrastructure/service-linked roles"
+  ],
+  "last_checked_at_utc": "2026-10-03T22:36:27.184197+00:00"
+}

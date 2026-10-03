@@ -27,8 +27,8 @@
   "aws_cli_available": true,
   "aws_sts_identity_verified": true,
   "aws_profile": "default",
-  "aws_deployment_permissions_verified": false,
-  "aws_resources_created": false,
+  "aws_deployment_permissions_verified": true,
+  "aws_resources_created": true,
   "prometheus_running": false,
   "alert_firing_observed": true,
   "course2_guide_received": true,
@@ -37,19 +37,20 @@
   "portable_prometheus_scrape_verified": true,
   "local_rollback_executed": true,
   "container_rollback_verified": true,
-  "aws_deployed": false,
+  "aws_deployed": true,
   "aws_iam_roles_exist": false,
   "ecr_preflight": "AccessDeniedException",
   "models_in_repository": "Trusted synthetic trained serving artifact and stable copy, with hash/runtime manifest",
   "dependency_lock": "requirements-api-lock.txt for Linux/Python 3.12, with hashes",
   "pending": [
-    "AWS permission correction and two IAM roles",
-    "Explicit authorization to create AWS resources and confirmation of destination account",
-    "Cloud HTTPS deployment verification",
-    "DMC submission or deadline exception"
+    "Complete AWS cleanup inventory: ALB/logs/scalable targets read access denied",
+    "Deregister laboratory task definition revisions with administrator",
+    "Actual Codespaces verification and DMC submission"
   ],
   "docker_containers_verified_in_github_actions": true,
   "ci_url": "https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37144265520",
   "pr_url": "https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/pull/2",
-  "pr_merged": true
+  "pr_merged": true,
+  "aws_https_verified": true,
+  "aws_service_current_state": "cleanup requested; DRAINING"
 }

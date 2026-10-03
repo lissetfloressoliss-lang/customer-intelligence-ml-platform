@@ -1,0 +1,21 @@
+{
+    "cluster": {
+        "clusterArn": "arn:aws:ecs:us-east-1:345485442361:cluster/novatel-lab",
+        "clusterName": "novatel-lab",
+        "status": "INACTIVE",
+        "registeredContainerInstancesCount": 0,
+        "runningTasksCount": 0,
+        "pendingTasksCount": 0,
+        "activeServicesCount": 0,
+        "statistics": [],
+        "tags": [],
+        "settings": [
+            {
+                "name": "containerInsights",
+                "value": "disabled"
+            }
+        ],
+        "capacityProviders": [],
+        "defaultCapacityProviderStrategy": []
+    }
+}
