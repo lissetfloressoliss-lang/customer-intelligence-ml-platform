@@ -1,0 +1,17 @@
+{
+    "imageDetails": [
+        {
+            "registryId": "345485442361",
+            "repositoryName": "novatel-churn-api",
+            "imageDigest": "sha256:7ce2b015d28fd0749100d452fc750bb109d4ea0d184dabc0e328990ad24b7601",
+            "imageTags": [
+                "lab-e57f06d"
+            ],
+            "imageSizeInBytes": 185129126,
+            "imagePushedAt": "2026-10-03T16:30:34.266000-05:00",
+            "imageManifestMediaType": "application/vnd.docker.distribution.manifest.v2+json",
+            "artifactMediaType": "application/vnd.docker.container.image.v1+json",
+            "imageStatus": "ACTIVE"
+        }
+    ]
+}

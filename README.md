@@ -124,3 +124,7 @@ docker compose down
 ```
 
 Codespaces debe disponer de Docker operativo. Estas instrucciones no son evidencia de una ejecución en Codespaces. El daemon local de Windows no respondió; la evidencia Docker procede del runner Ubuntu de Actions. No se crearon recursos AWS: faltan permisos ECR y ambos roles IAM; antes del despliegue se requiere confirmar cuenta y autorizar recursos/costos.
+
+### Intento AWS autorizado: 3 de octubre de 2026
+
+La imagen se construyó en [Actions](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37155186041) y se publicó en ECR. ECS Express aceptó el servicio, pero el aprovisionamiento falló por AccessDenied en el rol de infraestructura. No hubo tareas ejecutándose ni verificación HTTPS satisfactoria. Se solicitó eliminar el servicio, se eliminó ECR, el clúster quedó INACTIVE y el security group creado ya no existe. Se conservaron la red y roles preexistentes. La inspección de ALB y logs está denegada; no se afirma limpieza total ni costo facturado. [Resultado y pendientes](reports/metrics/aws_lab/outcome.json), [comprobación de limpieza](reports/metrics/aws_lab/cleanup_verification.json). El administrador debe identificar en CloudTrail la acción denegada antes de un nuevo intento. No se repitieron pruebas locales.

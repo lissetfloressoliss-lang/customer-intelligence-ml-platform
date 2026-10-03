@@ -1,0 +1,33 @@
+{
+  "cluster": "novatel-lab",
+  "serviceName": "novatel-churn-api",
+  "executionRoleArn": "arn:aws:iam::345485442361:role/ecsTaskExecutionRole",
+  "infrastructureRoleArn": "arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices",
+  "primaryContainer": {
+    "image": "345485442361.dkr.ecr.us-east-1.amazonaws.com/novatel-churn-api:lab-e57f06d",
+    "containerPort": 8000
+  },
+  "cpu": "256",
+  "memory": "1024",
+  "healthCheckPath": "/health",
+  "scalingTarget": {
+    "minTaskCount": 1,
+    "maxTaskCount": 1
+  },
+  "networkConfiguration": {
+    "subnets": [
+      "subnet-01e9e30cd3ff2b070",
+      "subnet-0239f97a016fa80af"
+    ]
+  },
+  "tags": [
+    {
+      "key": "Project",
+      "value": "NovaTel"
+    },
+    {
+      "key": "Purpose",
+      "value": "Curso2Lab"
+    }
+  ]
+}

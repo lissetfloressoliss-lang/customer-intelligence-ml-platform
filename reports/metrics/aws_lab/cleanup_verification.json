@@ -1,0 +1,173 @@
+{
+  "cluster": {
+    "exit_code": 0,
+    "response": {
+      "clusters": [
+        {
+          "clusterArn": "arn:aws:ecs:us-east-1:345485442361:cluster/novatel-lab",
+          "clusterName": "novatel-lab",
+          "status": "INACTIVE",
+          "registeredContainerInstancesCount": 0,
+          "runningTasksCount": 0,
+          "pendingTasksCount": 0,
+          "activeServicesCount": 0,
+          "statistics": [],
+          "tags": [],
+          "settings": [],
+          "capacityProviders": [],
+          "defaultCapacityProviderStrategy": []
+        }
+      ],
+      "failures": []
+    }
+  },
+  "repository": {
+    "exit_code": 254,
+    "response": "aws: [ERROR]: An error occurred (RepositoryNotFoundException) when calling the DescribeRepositories operation: The repository with name 'novatel-churn-api' does not exist in the registry with id '345485442361'"
+  },
+  "service": {
+    "exit_code": 0,
+    "response": {
+      "service": {
+        "cluster": "arn:aws:ecs:us-east-1:345485442361:cluster/novatel-lab",
+        "serviceName": "novatel-churn-api",
+        "serviceArn": "arn:aws:ecs:us-east-1:345485442361:service/novatel-lab/novatel-churn-api",
+        "status": {
+          "statusCode": "INACTIVE"
+        },
+        "activeConfigurations": [
+          {
+            "serviceRevisionArn": "arn:aws:ecs:us-east-1:345485442361:service-revision/novatel-lab/novatel-churn-api/6154510586206710195",
+            "executionRoleArn": "arn:aws:iam::345485442361:role/ecsTaskExecutionRole",
+            "cpu": "256",
+            "memory": "1024",
+            "networkConfiguration": {
+              "securityGroups": [
+                "sg-026e014a1d87e7634"
+              ],
+              "subnets": [
+                "subnet-01e9e30cd3ff2b070",
+                "subnet-0239f97a016fa80af"
+              ]
+            },
+            "healthCheckPath": "/health",
+            "primaryContainer": {
+              "image": "345485442361.dkr.ecr.us-east-1.amazonaws.com/novatel-churn-api:lab-e57f06d",
+              "containerPort": 8000,
+              "awsLogsConfiguration": {
+                "logGroup": "/aws/ecs/novatel-lab/novatel-churn-api-a899",
+                "logStreamPrefix": "ecs"
+              },
+              "environment": []
+            },
+            "scalingTarget": {
+              "minTaskCount": 1,
+              "maxTaskCount": 1,
+              "autoScalingMetric": "AVERAGE_CPU",
+              "autoScalingTargetValue": 60
+            },
+            "ingressPaths": [
+              {
+                "accessType": "PUBLIC",
+                "endpoint": "no-1ab4e9005fe745d99e8aa63dcb26c0dd.ecs.us-east-1.on.aws"
+              }
+            ],
+            "createdAt": "2026-10-03T16:31:03.565000-05:00"
+          }
+        ],
+        "createdAt": "2026-10-03T16:31:03.565000-05:00"
+      }
+    }
+  },
+  "security_group": {
+    "exit_code": 254,
+    "response": "aws: [ERROR]: An error occurred (InvalidGroup.NotFound) when calling the DescribeSecurityGroups operation: The security group 'sg-026e014a1d87e7634' does not exist"
+  },
+  "task_definition": {
+    "exit_code": 0,
+    "response": {
+      "taskDefinition": {
+        "taskDefinitionArn": "arn:aws:ecs:us-east-1:345485442361:task-definition/novatel-lab-novatel-churn-api:1",
+        "containerDefinitions": [
+          {
+            "name": "Main",
+            "image": "345485442361.dkr.ecr.us-east-1.amazonaws.com/novatel-churn-api:lab-e57f06d",
+            "cpu": 256,
+            "memoryReservation": 1024,
+            "portMappings": [
+              {
+                "containerPort": 8000,
+                "hostPort": 8000,
+                "protocol": "tcp",
+                "name": "main-8000-tcp"
+              }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [],
+            "logConfiguration": {
+              "logDriver": "awslogs",
+              "options": {
+                "awslogs-group": "/aws/ecs/novatel-lab/novatel-churn-api-a899",
+                "awslogs-region": "us-east-1",
+                "awslogs-stream-prefix": "ecs"
+              }
+            }
+          }
+        ],
+        "family": "novatel-lab-novatel-churn-api",
+        "executionRoleArn": "arn:aws:iam::345485442361:role/ecsTaskExecutionRole",
+        "networkMode": "awsvpc",
+        "revision": 1,
+        "volumes": [],
+        "status": "ACTIVE",
+        "requiresAttributes": [
+          {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+          },
+          {
+            "name": "ecs.capability.execution-role-awslogs"
+          },
+          {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+          },
+          {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+          },
+          {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+          },
+          {
+            "name": "ecs.capability.execution-role-ecr-pull"
+          },
+          {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+          },
+          {
+            "name": "ecs.capability.task-eni"
+          }
+        ],
+        "placementConstraints": [],
+        "compatibilities": [
+          "EC2",
+          "MANAGED_INSTANCES",
+          "FARGATE"
+        ],
+        "runtimePlatform": {
+          "cpuArchitecture": "X86_64",
+          "operatingSystemFamily": "LINUX"
+        },
+        "requiresCompatibilities": [
+          "FARGATE"
+        ],
+        "cpu": "256",
+        "memory": "1024",
+        "registeredAt": "2026-10-03T16:31:02.030000-05:00",
+        "enableFaultInjection": false
+      },
+      "tags": []
+    }
+  }
+}

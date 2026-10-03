@@ -1,0 +1,83 @@
+{
+    "services": [
+        {
+            "serviceArn": "arn:aws:ecs:us-east-1:345485442361:service/novatel-lab/novatel-churn-api",
+            "serviceName": "novatel-churn-api",
+            "clusterArn": "arn:aws:ecs:us-east-1:345485442361:cluster/novatel-lab",
+            "status": "ACTIVE",
+            "desiredCount": 1,
+            "runningCount": 0,
+            "pendingCount": 0,
+            "deploymentConfiguration": {
+                "deploymentCircuitBreaker": {
+                    "enable": true,
+                    "rollback": true
+                },
+                "maximumPercent": 200,
+                "minimumHealthyPercent": 100,
+                "strategy": "CANARY",
+                "bakeTimeInMinutes": 3,
+                "canaryConfiguration": {
+                    "canaryPercent": 5.0,
+                    "canaryBakeTimeInMinutes": 3
+                }
+            },
+            "deployments": [
+                {
+                    "id": "ecs-svc/6154510586206710195",
+                    "status": "PRIMARY",
+                    "taskDefinition": "arn:aws:ecs:us-east-1:345485442361:task-definition/novatel-lab-novatel-churn-api:1",
+                    "desiredCount": 0,
+                    "pendingCount": 0,
+                    "runningCount": 0,
+                    "failedTasks": 0,
+                    "createdAt": "2026-10-03T16:31:03.565000-05:00",
+                    "updatedAt": "2026-10-03T16:31:17.356000-05:00",
+                    "launchType": "FARGATE",
+                    "platformVersion": "1.4.0",
+                    "platformFamily": "Linux",
+                    "networkConfiguration": {
+                        "awsvpcConfiguration": {
+                            "subnets": [
+                                "subnet-01e9e30cd3ff2b070",
+                                "subnet-0239f97a016fa80af"
+                            ],
+                            "securityGroups": [],
+                            "assignPublicIp": "ENABLED"
+                        }
+                    },
+                    "rolloutState": "FAILED",
+                    "rolloutStateReason": "ECS deployment failed Service deployment rolled back because PROVISIONING lifecycle hook(s) failed. AccessDenied: The infrastructure role arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices doesn't have enough permission. Check the managed policy, then retry.."
+                }
+            ],
+            "events": [
+                {
+                    "id": "18b11d04-2051-4f53-b38b-517b8e8ecbc3",
+                    "createdAt": "2026-10-03T16:31:17.361000-05:00",
+                    "message": "(service novatel-churn-api) (deployment ecs-svc/6154510586206710195) deployment failed: Service deployment rolled back because PROVISIONING lifecycle hook(s) failed. AccessDenied: The infrastructure role arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices doesn't have enough permission. Check the managed policy, then retry.."
+                }
+            ],
+            "createdAt": "2026-10-03T16:31:03.565000-05:00",
+            "currentServiceRevisions": [
+                {
+                    "arn": "arn:aws:ecs:us-east-1:345485442361:service-revision/novatel-lab/novatel-churn-api/6154510586206710195",
+                    "requestedTaskCount": 0,
+                    "runningTaskCount": 0,
+                    "pendingTaskCount": 0
+                }
+            ],
+            "healthCheckGracePeriodSeconds": 0,
+            "schedulingStrategy": "REPLICA",
+            "deploymentController": {
+                "type": "ECS"
+            },
+            "createdBy": "arn:aws:iam::345485442361:user/dmc_pamelaf_s",
+            "enableECSManagedTags": true,
+            "propagateTags": "SERVICE",
+            "enableExecuteCommand": false,
+            "availabilityZoneRebalancing": "ENABLED",
+            "resourceManagementType": "ECS"
+        }
+    ],
+    "failures": []
+}

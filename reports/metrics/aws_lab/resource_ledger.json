@@ -1,0 +1,15 @@
+{
+  "account": "345485442361",
+  "region": "us-east-1",
+  "created_by_this_run": [
+    "arn:aws:ecr:us-east-1:345485442361:repository/novatel-churn-api",
+    "arn:aws:ecs:us-east-1:345485442361:cluster/novatel-lab"
+  ],
+  "preserve": [
+    "vpc-02df7948b4ca8def5",
+    "all existing subnets, route tables, internet gateway, IAM roles and shared infrastructure"
+  ],
+  "image_build_run": "https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37155186041",
+  "load_balancer_baseline": "DescribeLoadBalancers denied; never manually delete unverified/shared ALB",
+  "budget_usd": 1
+}

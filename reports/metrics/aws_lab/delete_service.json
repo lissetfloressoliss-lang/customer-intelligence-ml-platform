@@ -1,0 +1,14 @@
+{
+    "service": {
+        "cluster": "novatel-lab",
+        "serviceName": "novatel-churn-api",
+        "serviceArn": "arn:aws:ecs:us-east-1:345485442361:service/novatel-lab/novatel-churn-api",
+        "status": {},
+        "activeConfigurations": [
+            {
+                "primaryContainer": {}
+            }
+        ],
+        "createdAt": "2026-10-03T16:31:03.565000-05:00"
+    }
+}

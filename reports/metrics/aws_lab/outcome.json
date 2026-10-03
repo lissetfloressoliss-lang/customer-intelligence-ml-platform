@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-10-03T21:33:31.763023+00:00",
+  "account": "345485442361",
+  "region": "us-east-1",
+  "cloud_https_verified": false,
+  "deployment_result": "FAILED_PROVISIONING_INFRASTRUCTURE_ROLE_ACCESS_DENIED",
+  "failure": "AccessDenied: The infrastructure role arn:aws:iam::345485442361:role/ecsInfrastructureRoleForExpressServices doesn't have enough permission. Check the managed policy, then retry.",
+  "image_digest": "sha256:7ce2b015d28fd0749100d452fc750bb109d4ea0d184dabc0e328990ad24b7601",
+  "image_published": true,
+  "running_tasks_observed": 0,
+  "cleanup_requested": true,
+  "ecr_deleted": true,
+  "cluster_inactive": true,
+  "created_security_group_absent": true,
+  "preexisting_network_and_roles_preserved": true,
+  "unverified_residues": [
+    "ALB and CloudWatch logs: read access denied",
+    "Task definition may remain; see cleanup_verification.json"
+  ],
+  "cost_actual": "Not available; billing not queried",
+  "budget_usd": 1,
+  "cost_assessment": "Short failed attempt, no observed running tasks. Expected below USD 1; not a billing guarantee. Unverified resource inventory prevents full cost closure.",
+  "required_admin_step": "Inspect CloudTrail around 2026-10-03 21:31:03\u201321:31:17 UTC for Express provisioning AccessDenied and exact denied action/resource; inspect residual ALB/logs and permissions boundary/SCP. Do not attach AdministratorAccess."
+}
