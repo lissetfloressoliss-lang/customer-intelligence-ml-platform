@@ -15,23 +15,23 @@ stages:
       size: 3497
     - path: src/data
       hash: md5
-      md5: a90e347ee2206fc0c5bafc07ac65cbdf.dir
-      size: 6101
+      md5: e52a676447cef9dc54c5bd990fb9e58b.dir
+      size: 6106
       nfiles: 4
     - path: src/features
       hash: md5
-      md5: 78fb19d896181d9435514e16c67ab3c5.dir
-      size: 5246
+      md5: a7d48677bce6cd1817be8c138f676b1e.dir
+      size: 5276
       nfiles: 3
     - path: src/models
       hash: md5
-      md5: 465fb014aba95b6853e716c9984a4099.dir
-      size: 8160
+      md5: 7bcd21345498dd462110aab34e03476b.dir
+      size: 8229
       nfiles: 5
     - path: src/utils
       hash: md5
-      md5: 9ea8eeec930e72ff107dd53e5fb2c825.dir
-      size: 3767
+      md5: 50c29f5a6654a4419dbcd0cae52f9631.dir
+      size: 3802
       nfiles: 5
     params:
       params.yaml:
@@ -52,7 +52,7 @@ stages:
   predict:
     cmd: python main.py predict --data data/raw/customer_churn.csv --model
       artifacts/models/churn_pipeline.joblib --output
-      reports/predictions/customer_predictions.csv --threshold 0.5
+      reports/predictions/customer_predictions.csv --threshold 0.45
     deps:
     - path: artifacts/models/churn_pipeline.joblib
       hash: md5
@@ -68,24 +68,24 @@ stages:
       size: 3497
     - path: src/features
       hash: md5
-      md5: 78fb19d896181d9435514e16c67ab3c5.dir
-      size: 5246
+      md5: a7d48677bce6cd1817be8c138f676b1e.dir
+      size: 5276
       nfiles: 3
     - path: src/models
       hash: md5
-      md5: 465fb014aba95b6853e716c9984a4099.dir
-      size: 8160
+      md5: 7bcd21345498dd462110aab34e03476b.dir
+      size: 8229
       nfiles: 5
     - path: src/utils
       hash: md5
-      md5: 9ea8eeec930e72ff107dd53e5fb2c825.dir
-      size: 3767
+      md5: 50c29f5a6654a4419dbcd0cae52f9631.dir
+      size: 3802
       nfiles: 5
     params:
       params.yaml:
-        prediction.threshold: 0.5
+        prediction.threshold: 0.45
     outs:
     - path: reports/predictions/customer_predictions.csv
       hash: md5
-      md5: 9a3339fe11879e84f43ad41b73bd2629
+      md5: 7e254d04533c7504ef3cc7e0455212df
       size: 32300
