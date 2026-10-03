@@ -16,17 +16,17 @@
     "ecr_deleted": true,
     "cluster_inactive": true,
     "running_tasks": 0,
-    "service": {
-      "statusCode": "DRAINING"
-    },
-    "security_groups": "awaiting Express cleanup",
+    "service": "INACTIVE",
+    "security_groups": "both created groups absent; only default SG remains",
     "task_definition_revision_2": "DeregisterTaskDefinition denied",
     "ALB_logs_autoscaling_inventory": "read access denied; full cleanup not yet verified",
     "exclusive_security_group_ids": [
       "sg-02b021826cefe3ada",
       "sg-00cd6568e9995797e"
     ],
-    "manual_group_cleanup": "see exclusive_security_group_cleanup.json"
+    "manual_group_cleanup": "see exclusive_security_group_cleanup.json",
+    "rollback_alarm": "absent",
+    "full_cleanup_verified": false
   },
   "preserved": [
     "default VPC/subnets/route/internet gateway/default SG",
