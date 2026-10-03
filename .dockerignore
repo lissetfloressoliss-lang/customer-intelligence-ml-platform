@@ -1,0 +1,14 @@
+*
+!requirements-api.txt
+!pyproject.toml
+!params.yaml
+!api/
+!api/*.py
+!src/
+!src/**/*.py
+!src/**
+**/__pycache__/
+**/*.pyc
+!models/
+!models/*.joblib
+!requirements-api-lock.txt

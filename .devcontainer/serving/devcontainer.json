@@ -1,0 +1,7 @@
+{
+  "name": "NovaTel Curso 2 Serving (Python 3.12)",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "postCreateCommand": "pip install -r requirements.txt -r requirements-api.txt -r requirements-api-dev.txt",
+  "forwardPorts": [8000, 9090],
+  "customizations": {"vscode": {"extensions": ["ms-python.python", "ms-toolsai.jupyter"]}}
+}

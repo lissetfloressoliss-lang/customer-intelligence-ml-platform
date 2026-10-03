@@ -1,0 +1,14 @@
+{
+  "restored_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d",
+  "previous_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d",
+  "archive": "churn_pipeline.joblib.before-rollback",
+  "requires_restart": true,
+  "health_after_restart": {
+    "status": "healthy",
+    "service": "novatel-churn-api",
+    "threshold": 0.45,
+    "model_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d"
+  },
+  "runtime": "Local Uvicorn restart, not a container or cloud rollback",
+  "backup_equals_initial_model": true
+}

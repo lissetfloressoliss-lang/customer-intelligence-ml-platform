@@ -1,0 +1,13 @@
+{
+  "scenario": "normal",
+  "successful_requests": 50,
+  "seed": 2026,
+  "input_means": {
+    "monthly_fee": 110.82359999999998,
+    "support_calls": 1.76,
+    "last_payment_delay": 6.52,
+    "digital_usage_score": 70.09782608695652
+  },
+  "mean_churn_probability": 0.41355249249836895,
+  "limitation": "Synthetic perturbation; no independent ground truth or concept-drift conclusion."
+}

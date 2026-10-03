@@ -1,0 +1,11 @@
+groups:
+  - name: churn_alerts
+    rules:
+      - alert: HighAveragePaymentDelay
+        expr: sum(rate(churn_input_payment_delay_sum[15s])) / sum(rate(churn_input_payment_delay_count[15s])) > 15
+        for: 15s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Observed average payment delay exceeds 15 days"
+          description: "Investigate distributions and obtain ground truth before any retraining decision."

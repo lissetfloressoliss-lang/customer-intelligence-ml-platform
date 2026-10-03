@@ -1,0 +1,28 @@
+rule_files: [../alerts.yml]
+evaluation_interval: 5s
+tests:
+  - interval: 5s
+    input_series:
+      - series: churn_input_payment_delay_sum
+        values: '0+25x12'
+      - series: churn_input_payment_delay_count
+        values: '0+5x12'
+    alert_rule_test:
+      - eval_time: 30s
+        alertname: HighAveragePaymentDelay
+        exp_alerts: []
+  - interval: 5s
+    input_series:
+      - series: churn_input_payment_delay_sum
+        values: '0+100x12'
+      - series: churn_input_payment_delay_count
+        values: '0+5x12'
+    alert_rule_test:
+      - eval_time: 30s
+        alertname: HighAveragePaymentDelay
+        exp_alerts:
+          - exp_labels:
+              severity: warning
+            exp_annotations:
+              summary: "Observed average payment delay exceeds 15 days"
+              description: "Investigate distributions and obtain ground truth before any retraining decision."

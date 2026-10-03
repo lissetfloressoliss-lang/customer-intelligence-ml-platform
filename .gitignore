@@ -22,3 +22,11 @@ artifacts/models/*.joblib
 reports/predictions/*.csv
 data/processed/*
 !data/processed/.gitkeep
+models/*.joblib
+artifacts/models/*rollback*.json
+models/*.before-rollback
+models/.restore-*
+
+!models/churn_pipeline.joblib
+!models/churn_pipeline_v1.joblib
+models/*.before-rollback*

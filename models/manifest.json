@@ -1,0 +1,13 @@
+{
+  "baseline_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d",
+  "backup": "churn_pipeline_v1.joblib",
+  "active": "churn_pipeline.joblib",
+  "backup_origin": "Copy of validated Curso 1 artifact; same model, not an independent retrained version.",
+  "runtime_versions": {
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "2.3.3",
+    "joblib": "1.6.0"
+  }
+}

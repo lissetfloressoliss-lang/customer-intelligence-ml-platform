@@ -105,3 +105,7 @@ dvc metrics show
 Se esperan 12 tests aprobados y un dataset de 1000 filas, 21 columnas, 256 nulos y churn de 24%. El comparador usa las mismas 200 filas reservadas, no las predicciones de todo el dataset. Confirmar que sus costos reproducen 8950 y 7350; si cambian, registrar las versiones y resultados reales antes de atribuir la diferencia al umbral. Los rangos de dependencias permiten actualizaciones y no garantizan idénticas versiones entre Python 3.11 y 3.12.
 
 Esta secuencia está documentada para completar el requisito del laboratorio. La ejecución local y GitHub Actions no equivalen a ejecutar un Codespace; conservar la salida de la terminal como evidencia del paso realizado en Codespaces. Detener el Codespace al terminar desde su menú de administración.
+
+## Curso 2: serving local
+
+La guía completa se contrastó en [adaptaciones, resultados propios y bloqueos](docs/course_2/guide_alignment.md). Hay 33 tests aprobados, simulación real NORMAL/DRIFT con Prometheus portátil y alerta FIRING, y rollback local con hash comprobado. Docker y AWS siguen pendientes. El [inventario inicial](docs/course_2/materials_and_readiness.md) describe el estado previo a recibir la guía. Los modelos de serving sintéticos están en models/, con manifiesto de versiones; artifacts/models/ conserva el Curso 1.
