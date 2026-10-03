@@ -21,7 +21,7 @@ Jupyter no está declarado: para abrir notebooks hace falta un kernel/entorno Ju
 
 La fuente real es **`params.yaml` en la raíz**, no `config/params.yaml`.
 Ver [diferencias con la guía](docs/course_notes/laboratory_alignment.md).
-El YAML configura la división, semilla, algoritmo, iteraciones, pesos, umbral y rutas de salida. `--params` permite otra configuración. `--test-size`, `--seed`, `--threshold` y rutas de salida explícitas tienen prioridad sobre el YAML. El umbral inicial de esta versión funcional es **0.50**.
+El YAML configura la división, semilla, algoritmo, iteraciones, pesos, umbral y rutas de salida. `--params` permite otra configuración. `--test-size`, `--seed`, `--threshold` y rutas de salida explícitas tienen prioridad sobre el YAML. El umbral vigente es **0.45**. La versión funcional inicial de `main` se registró con **0.50** antes de crear `feature/threshold-configuration`.
 
 ## Verificaciones y ejecución
 

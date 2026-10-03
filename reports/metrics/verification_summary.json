@@ -25,10 +25,12 @@
   "dvc_repro": "train and predict passed with venv first in PATH",
   "dvc_metrics_show": "Blocked by libgit2 ownership validation in execution account; JSON inspected",
   "pending": [
-    "feature branch and requested commit at 0.45",
     "publish both branches in verified Lisset account",
     "create and merge PR",
     "synchronize main"
   ],
-  "intended_github_account": "lissetfloressoliss-lang"
+  "intended_github_account": "lissetfloressoliss-lang",
+  "baseline_commit": "9403276",
+  "current_threshold": 0.45,
+  "feature_branch": "feature/threshold-configuration"
 }
