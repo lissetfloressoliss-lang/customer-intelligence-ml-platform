@@ -18,19 +18,24 @@
   "source_dataset_reproduced": true,
   "secrets_pattern_scan": "No credentials found; example email in Git guide only",
   "workflow_local": true,
-  "workflow_remote_verified": false,
+  "workflow_remote_verified": true,
   "git_author_name": "Lisset Flores",
   "git_author_email": "337413330+lissetfloressoliss-lang@users.noreply.github.com",
-  "github_authentication": "Not logged in; intended Lisset account must be verified",
+  "github_authentication": "Verified lissetfloressoliss-lang",
   "dvc_repro": "train and predict passed with venv first in PATH",
   "dvc_metrics_show": "Blocked by libgit2 ownership validation in execution account; JSON inspected",
   "pending": [
-    "publish both branches in verified Lisset account",
-    "create and merge PR",
-    "synchronize main"
+    "Run documented final verification inside GitHub Codespaces"
   ],
   "intended_github_account": "lissetfloressoliss-lang",
   "baseline_commit": "9403276",
   "current_threshold": 0.45,
-  "feature_branch": "feature/threshold-configuration"
+  "feature_branch": "feature/threshold-configuration",
+  "repository_url": "https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform",
+  "pull_request_url": "https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/pull/1",
+  "pull_request_state": "MERGED",
+  "merge_commit": "2c436fef1432d46336201640d4643a231ec2a74a",
+  "workflow_url": "https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37139590833",
+  "workflow_tests_passed": 12,
+  "main_synchronized": true
 }

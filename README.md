@@ -21,7 +21,7 @@ Jupyter no está declarado: para abrir notebooks hace falta un kernel/entorno Ju
 
 La fuente real es **`params.yaml` en la raíz**, no `config/params.yaml`.
 Ver [diferencias con la guía](docs/course_notes/laboratory_alignment.md).
-El YAML configura la división, semilla, algoritmo, iteraciones, pesos, umbral y rutas de salida. `--params` permite otra configuración. `--test-size`, `--seed`, `--threshold` y rutas de salida explícitas tienen prioridad sobre el YAML. El umbral vigente es **0.45**. La versión funcional inicial de `main` se registró con **0.50** antes de crear `feature/threshold-configuration`.
+El YAML configura la división, semilla, algoritmo, iteraciones, pesos, umbral y rutas de salida. `--params` permite otra configuración. `--test-size`, `--seed`, `--threshold` y rutas de salida explícitas tienen prioridad sobre el YAML. El umbral vigente es **0.45**. La versión funcional inicial de `main` (`9403276`) se registró con **0.50** antes de crear `feature/threshold-configuration`.
 
 ## Verificaciones y ejecución
 
@@ -78,7 +78,7 @@ La comparación es exploratoria sobre un único split sintético. Al comparar um
 
 Los artefactos `.joblib`, predicciones, entorno virtual, cachés, herramientas y temporales están excluidos de Git y se regeneran con los comandos anteriores. La revisión de los archivos candidatos, incluidos los notebooks, no detectó claves ni tokens; el correo `correo@example.com` de la guía Git es un ejemplo. El CSV no contiene nombres, correos, teléfonos ni direcciones reales. El análisis por patrones no reemplaza una auditoría de seguridad formal. Los manifiestos originales reflejan la validación histórica del ZIP (9 pruebas), no sustituyen los resultados actuales.
 
-Estado remoto: pendiente de autenticación en la cuenta de Lisset Flores; no se ha creado ni integrado un PR. El workflow existe localmente; no se afirma ejecución remota hasta publicarlo.
+Estado remoto: repositorio público publicado en la cuenta verificada `lissetfloressoliss-lang` de Lisset Flores. Ambas ramas están publicadas y el [PR #1](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/pull/1) fue integrado mediante merge; `main` local se sincronizó con el remoto. [GitHub Actions](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37139590833) aprobó las 12 pruebas en Ubuntu y Python 3.12. La ejecución dentro de Codespaces permanece pendiente y se describe a continuación.
 
 ## Verificación final en GitHub Codespaces
 
