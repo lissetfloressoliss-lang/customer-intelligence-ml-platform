@@ -79,3 +79,29 @@ La comparación es exploratoria sobre un único split sintético. Al comparar um
 Los artefactos `.joblib`, predicciones, entorno virtual, cachés, herramientas y temporales están excluidos de Git y se regeneran con los comandos anteriores. La revisión de los archivos candidatos, incluidos los notebooks, no detectó claves ni tokens; el correo `correo@example.com` de la guía Git es un ejemplo. El CSV no contiene nombres, correos, teléfonos ni direcciones reales. El análisis por patrones no reemplaza una auditoría de seguridad formal. Los manifiestos originales reflejan la validación histórica del ZIP (9 pruebas), no sustituyen los resultados actuales.
 
 Estado remoto: pendiente de autenticación en la cuenta de Lisset Flores; no se ha creado ni integrado un PR. El workflow existe localmente; no se afirma ejecución remota hasta publicarlo.
+
+## Verificación final en GitHub Codespaces
+
+Abrir el repositorio público, seleccionar **Code > Codespaces > Create codespace on main**. Esperar el `postCreateCommand`, que instala ambas listas de dependencias. El Dev Container usa Python 3.11, compatible con el requisito >=3.11; la verificación local usó Python 3.12.13. No hace falta volver a cargar el ZIP: el código ya está en la raíz del repositorio.
+
+Desde la terminal del Codespace, en la raíz:
+
+```bash
+git switch main
+git pull --ff-only
+python --version
+python -c "import pandas, sklearn, dvc; print('pandas', pandas.__version__, 'sklearn', sklearn.__version__, 'dvc', dvc.__version__)"
+pytest -v
+python -c "from src.data import load_customer_data, validate_customer_data; print(validate_customer_data(load_customer_data()).to_dict())"
+python main.py train --data data/raw/customer_churn.csv
+python main.py predict --data data/raw/customer_churn.csv --model artifacts/models/churn_pipeline.joblib
+python scripts/evaluate_thresholds.py
+ls -lh artifacts/models/churn_pipeline.joblib reports/metrics/training_metrics.json reports/predictions/customer_predictions.csv
+python -c "import pandas as pd; d=pd.read_csv('reports/predictions/customer_predictions.csv'); assert len(d)==1000; assert d.churn_probability.between(0,1).all(); assert (d.churn_prediction==(d.churn_probability>=0.45).astype(int)).all(); print('1000 predicciones verificadas, threshold 0.45')"
+dvc repro
+dvc metrics show
+```
+
+Se esperan 12 tests aprobados y un dataset de 1000 filas, 21 columnas, 256 nulos y churn de 24%. El comparador usa las mismas 200 filas reservadas, no las predicciones de todo el dataset. Confirmar que sus costos reproducen 8950 y 7350; si cambian, registrar las versiones y resultados reales antes de atribuir la diferencia al umbral. Los rangos de dependencias permiten actualizaciones y no garantizan idénticas versiones entre Python 3.11 y 3.12.
+
+Esta secuencia está documentada para completar el requisito del laboratorio. La ejecución local y GitHub Actions no equivalen a ejecutar un Codespace; conservar la salida de la terminal como evidencia del paso realizado en Codespaces. Detener el Codespace al terminar desde su menú de administración.
