@@ -26,7 +26,10 @@
     ],
     "manual_group_cleanup": "see exclusive_security_group_cleanup.json",
     "rollback_alarm": "absent",
-    "full_cleanup_verified": false
+    "full_cleanup_verified": false,
+    "ALB_and_target_groups": "absent per administrator manual console confirmation; not API verified",
+    "NovaTel_log_groups": "both deleted per administrator manual console confirmation; /aws-glue/crawlers preserved",
+    "autoscaling": "pending confirmation"
   },
   "preserved": [
     "default VPC/subnets/route/internet gateway/default SG",

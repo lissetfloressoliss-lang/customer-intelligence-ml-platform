@@ -1,0 +1,19 @@
+{
+  "recorded_date_lima": "2026-10-03",
+  "source": "Direct user report of administrator console checks",
+  "verification_method": "manual_console_confirmation_not_API",
+  "region": "us-east-1",
+  "load_balancers": "administrator confirms none in region",
+  "target_groups": "administrator confirms none in region",
+  "deleted_log_groups": [
+    "/aws/ecs/novatel-lab/novatel-churn-api-a899",
+    "/aws/ecs/novatel-lab/novatel-churn-api-3cf2"
+  ],
+  "preserved_log_group": "/aws-glue/crawlers",
+  "autoscaling": "not confirmed",
+  "task_definition_revisions": {
+    "1": "no final administrator confirmation",
+    "2": "last API evidence ACTIVE"
+  },
+  "full_cleanup_verified": false
+}

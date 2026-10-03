@@ -1,3 +1,5 @@
+> Estado histórico de implementación. Para el estado final, despliegue AWS y cierre, consultar [auditoría final](final_audit.md). Las afirmaciones anteriores sobre roles ausentes o AWS pendiente quedaron superadas por las evidencias posteriores.
+
 # Curso 2: contraste con la guía y resultados propios
 
 Guía recibida como texto adjunto el 3 de octubre de 2026. La base es el repositorio NovaTel existente y su pipeline persistido del Curso 1. Se conserva el modelo original en artifacts/models/; serving usa copias confiables en models/.
