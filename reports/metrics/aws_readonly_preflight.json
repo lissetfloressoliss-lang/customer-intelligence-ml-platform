@@ -1,0 +1,19 @@
+{
+  "region_from_guide": "us-east-1",
+  "read_only": true,
+  "resources_created": false,
+  "ecsTaskExecutionRole": {
+    "query_succeeded": false,
+    "status": "not_found"
+  },
+  "ecsInfrastructureRoleForExpressServices": {
+    "query_succeeded": false,
+    "status": "not_found"
+  },
+  "ecr_repository": {
+    "query_succeeded": false,
+    "status": "permission_or_access_error",
+    "error_code": "AccessDeniedException"
+  },
+  "configured_region": "us-east-1"
+}

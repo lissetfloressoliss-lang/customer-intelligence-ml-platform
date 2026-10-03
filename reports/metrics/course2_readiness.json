@@ -17,7 +17,7 @@
     "python-multipart": "0.0.32",
     "httpx": "0.28.1"
   },
-  "pytest_passed": 29,
+  "pytest_passed": 33,
   "pytest_warnings": [
     "Starlette TestClient deprecates httpx in favor of httpx2"
   ],
@@ -30,8 +30,24 @@
   "aws_deployment_permissions_verified": false,
   "aws_resources_created": false,
   "prometheus_running": false,
-  "alert_firing_observed": false,
-  "course2_guide_received": false,
+  "alert_firing_observed": true,
+  "course2_guide_received": true,
   "course1_source_and_model_unchanged": true,
-  "branch_published": false
+  "branch_published": false,
+  "portable_prometheus_scrape_verified": true,
+  "local_rollback_executed": true,
+  "container_rollback_verified": false,
+  "aws_deployed": false,
+  "aws_iam_roles_exist": false,
+  "ecr_preflight": "AccessDeniedException",
+  "models_in_repository": "Trusted synthetic trained serving artifact and stable copy, with hash/runtime manifest",
+  "dependency_lock": "requirements-api-lock.txt for Linux/Python 3.12, with hashes",
+  "pending": [
+    "Docker engine running and container/image validation",
+    "AWS permission correction and two IAM roles",
+    "Explicit authorization to create AWS resources and confirmation of destination account",
+    "Cloud HTTPS deployment verification",
+    "Actual container rollback",
+    "DMC submission or deadline exception"
+  ]
 }

@@ -6,9 +6,9 @@
 !api/*.py
 !src/
 !src/**/*.py
-!artifacts/
-!artifacts/models/
-!artifacts/models/churn_pipeline.joblib
 !src/**
 **/__pycache__/
 **/*.pyc
+!models/
+!models/*.joblib
+!requirements-api-lock.txt

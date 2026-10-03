@@ -3,28 +3,28 @@
 import io
 import logging
 import time
-import warnings
 from contextlib import asynccontextmanager
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from fastapi import FastAPI, HTTPException, UploadFile
+from fastapi import Body, FastAPI, HTTPException, UploadFile
 from prometheus_client import (
     CONTENT_TYPE_LATEST,
     CollectorRegistry,
     Counter,
+    Gauge,
     Histogram,
     generate_latest,
 )
 from pydantic import ValidationError
-from sklearn.exceptions import InconsistentVersionWarning
 from starlette.responses import Response
 
+from api.dependencies import load_serving_model
 from api.schemas import CustomerInput, PredictionOutput
 from src.features.preprocessing import get_feature_schema
-from src.models import load_model, predict_customers
-from src.utils.configuration import load_parameters, resolve_project_path
+from src.models import predict_customers
+from src.utils.configuration import load_parameters
 
 MAX_BATCH_ROWS = 50_000
 MAX_BATCH_BYTES = 20 * 1024 * 1024
@@ -53,17 +53,41 @@ def create_app(model_path: str | Path | None = None) -> FastAPI:
         "churn_prediction_errors_total", "Inference failures", registry=registry
     )
     delay = Histogram(
-        "churn_input_last_payment_delay",
+        "churn_input_payment_delay",
         "Observed payment delay days",
         buckets=(0, 5, 10, 15, 30, 60, 120),
         registry=registry,
     )
     scores = Histogram(
-        "churn_probability",
+        "churn_probability_distribution",
         "Predicted score distribution",
         buckets=(0, 0.1, 0.25, 0.45, 0.5, 0.75, 0.9, 1),
         registry=registry,
     )
+
+    latest_probability = Gauge(
+        "churn_probability", "Latest observed churn score", registry=registry
+    )
+    input_histograms = {
+        "monthly_fee": Histogram(
+            "churn_input_monthly_fee",
+            "Monthly fee",
+            buckets=(0, 50, 100, 150, 200, 500),
+            registry=registry,
+        ),
+        "support_calls": Histogram(
+            "churn_input_support_calls",
+            "Support calls",
+            buckets=(0, 1, 2, 5, 10, 20),
+            registry=registry,
+        ),
+        "digital_usage_score": Histogram(
+            "churn_input_digital_usage",
+            "Digital usage score",
+            buckets=(0, 10, 25, 50, 75, 100),
+            registry=registry,
+        ),
+    }
 
     @asynccontextmanager
     async def lifespan(application: FastAPI):
@@ -72,16 +96,13 @@ def create_app(model_path: str | Path | None = None) -> FastAPI:
         threshold = float(params["prediction"]["threshold"])
         if not 0 < threshold < 1:
             raise ValueError("Invalid configured threshold")
-        with warnings.catch_warnings():
-            warnings.simplefilter("error", InconsistentVersionWarning)
-            model = load_model(
-                resolve_project_path(model_path or params["paths"]["model"])
-            )
+        model, model_sha = load_serving_model(model_path)
         if list(model.feature_names_in_) != list(get_feature_schema().model_features):
             raise ValueError("Model feature contract differs from schema")
         if list(model.classes_) != [0, 1]:
             raise ValueError("Expected classes [0,1]")
         application.state.model = model
+        application.state.model_sha256 = model_sha
         application.state.threshold = threshold
         yield
         application.state.model = None
@@ -108,8 +129,12 @@ def create_app(model_path: str | Path | None = None) -> FastAPI:
         for row in result.itertuples():
             count.labels(**{"class": str(row.churn_prediction)}).inc()
             scores.observe(row.churn_probability)
+            latest_probability.set(row.churn_probability)
         for value in dataframe.last_payment_delay:
             delay.observe(float(value))
+        for column, histogram in input_histograms.items():
+            for value in dataframe[column].dropna():
+                histogram.observe(float(value))
         return result.to_dict(orient="records")
 
     @application.get("/health")
@@ -117,7 +142,12 @@ def create_app(model_path: str | Path | None = None) -> FastAPI:
         """Return readiness only after the model loaded successfully."""
         if getattr(application.state, "model", None) is None:
             raise HTTPException(503, "Model unavailable")
-        return {"status": "healthy", "threshold": application.state.threshold}
+        return {
+            "status": "healthy",
+            "service": "novatel-churn-api",
+            "threshold": application.state.threshold,
+            "model_sha256": application.state.model_sha256,
+        }
 
     @application.post("/predict", response_model=PredictionOutput)
     def predict(customer: CustomerInput) -> dict:
@@ -125,6 +155,16 @@ def create_app(model_path: str | Path | None = None) -> FastAPI:
         return infer([customer])[0]
 
     @application.post("/predict/batch", response_model=list[PredictionOutput])
+    def predict_json_batch(
+        customers: list[CustomerInput] = Body(min_length=1, max_length=MAX_BATCH_ROWS),
+    ) -> list[dict]:
+        """Infer a JSON list of complete feature records, as requested by the guide."""
+        ids = [customer.customer_id for customer in customers]
+        if len(ids) != len(set(ids)):
+            raise HTTPException(422, "Duplicate customer_id values")
+        return infer(customers)
+
+    @application.post("/predict/batch/csv", response_model=list[PredictionOutput])
     def predict_batch(file: UploadFile) -> list[dict]:
         """Predict a validated UTF-8 CSV, capped at 50000 rows and 20 MiB."""
         if not file.filename or not file.filename.lower().endswith(".csv"):

@@ -1,11 +1,11 @@
 FROM python:3.12-slim
 WORKDIR /app
-COPY requirements-api.txt ./
-RUN pip install --no-cache-dir -r requirements-api.txt
+COPY requirements-api-lock.txt ./
+RUN pip install --no-cache-dir --require-hashes -r requirements-api-lock.txt
 COPY api ./api
 COPY src ./src
 COPY pyproject.toml params.yaml ./
-COPY artifacts/models/churn_pipeline.joblib ./artifacts/models/churn_pipeline.joblib
+COPY models/churn_pipeline.joblib models/churn_pipeline_v1.joblib ./models/
 RUN useradd --create-home appuser
 USER appuser
 EXPOSE 8000

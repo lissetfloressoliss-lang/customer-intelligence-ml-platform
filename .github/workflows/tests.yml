@@ -16,3 +16,22 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt -r requirements-api.txt -r requirements-api-dev.txt
       - run: pytest -v
+      - name: Build and start actual containers
+        run: docker compose up --build -d --wait
+      - name: Validate alert rules
+        run: |
+          docker compose exec -T prometheus promtool check rules /etc/prometheus/alerts.yml
+          docker run --rm --entrypoint promtool -v "$PWD:/workspace:ro" -w /workspace prom/prometheus:v3.5.0 test rules tests/prometheus_rules.yml
+      - name: Verify normal/drift and container rollback
+        run: python scripts/verify_container_monitoring.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: course2-verification
+          path: |
+            reports/metrics/container_verification.json
+            reports/metrics/traffic_normal.json
+            reports/metrics/traffic_drift.json
+      - name: Stop containers
+        if: always()
+        run: docker compose down

@@ -108,4 +108,4 @@ Esta secuencia está documentada para completar el requisito del laboratorio. La
 
 ## Curso 2: serving local
 
-La extensión inicial se documenta en [materiales, compatibilidad y pruebas locales](docs/course_2/materials_and_readiness.md). La guía completa sigue pendiente. No se ha desplegado en AWS ni verificado una alerta Prometheus.
+La guía completa se contrastó en [adaptaciones, resultados propios y bloqueos](docs/course_2/guide_alignment.md). Hay 33 tests aprobados, simulación real NORMAL/DRIFT con Prometheus portátil y alerta FIRING, y rollback local con hash comprobado. Docker y AWS siguen pendientes. El [inventario inicial](docs/course_2/materials_and_readiness.md) describe el estado previo a recibir la guía. Los modelos de serving sintéticos están en models/, con manifiesto de versiones; artifacts/models/ conserva el Curso 1.

@@ -36,7 +36,8 @@ def input_record(dataframe):
 def test_health_and_prediction_match_pipeline(
     client, serving_artifact, customer_dataframe
 ):
-    assert client.get("/health").json() == {"status": "healthy", "threshold": 0.45}
+    assert client.get("/health").json()["status"] == "healthy"
+    assert client.get("/health").json()["threshold"] == 0.45
     response = client.post("/predict", json=input_record(customer_dataframe))
     assert response.status_code == 200
     expected = predict_customers(
@@ -89,7 +90,7 @@ def test_missing_feature_rejected(client, customer_dataframe):
 def test_batch_matches_pipeline(client, serving_artifact, customer_dataframe):
     frame = customer_dataframe.head(10)
     response = client.post(
-        "/predict/batch",
+        "/predict/batch/csv",
         files={
             "file": (
                 "customers.csv",
@@ -116,7 +117,9 @@ def test_batch_matches_pipeline(client, serving_artifact, customer_dataframe):
 )
 def test_bad_csv(client, filename, content, status):
     assert (
-        client.post("/predict/batch", files={"file": (filename, content)}).status_code
+        client.post(
+            "/predict/batch/csv", files={"file": (filename, content)}
+        ).status_code
         == status
     )
 
@@ -126,7 +129,7 @@ def test_batch_row_limit(client, customer_dataframe, monkeypatch):
     csv = customer_dataframe.head(3).to_csv(index=False).encode("utf-8")
     assert (
         client.post(
-            "/predict/batch", files={"file": ("customers.csv", csv)}
+            "/predict/batch/csv", files={"file": ("customers.csv", csv)}
         ).status_code
         == 413
     )
@@ -141,7 +144,7 @@ def test_metrics_record_actual_predictions(client, customer_dataframe):
     assert metrics.status_code == 200
     assert "churn_predictions_total" in metrics.text
     assert "churn_prediction_latency_seconds_count 1.0" in metrics.text
-    assert "churn_input_last_payment_delay_count 1.0" in metrics.text
+    assert "churn_input_payment_delay_count 1.0" in metrics.text
     assert "NT-000001" not in metrics.text
 
 
@@ -167,7 +170,7 @@ def test_incompatible_sklearn_fails_startup(serving_artifact, monkeypatch):
             )
         )
 
-    monkeypatch.setattr("api.main.load_model", incompatible_load)
+    monkeypatch.setattr("api.dependencies.load_model", incompatible_load)
     with (
         pytest.raises(InconsistentVersionWarning),
         TestClient(create_app(serving_artifact[0])),
@@ -179,7 +182,65 @@ def test_duplicate_batch_ids_rejected(client, customer_dataframe):
     frame = customer_dataframe.head(2).copy()
     frame["customer_id"] = "NT-duplicate"
     response = client.post(
-        "/predict/batch",
+        "/predict/batch/csv",
         files={"file": ("customers.csv", frame.to_csv(index=False).encode("utf-8"))},
     )
     assert response.status_code == 422
+
+
+def test_json_batch_and_aliases(client, customer_dataframe):
+    row = input_record(customer_dataframe)
+    row["payment_delay"] = row.pop("last_payment_delay")
+    row["digital_usage"] = row.pop("digital_usage_score")
+    response = client.post("/predict/batch", json=[row])
+    assert response.status_code == 200
+    assert len(response.json()) == 1
+    assert client.post("/predict/batch", json=[]).status_code == 422
+
+
+def test_guide_four_fields_do_not_fabricate_features(client):
+    response = client.post(
+        "/predict",
+        json={
+            "monthly_fee": 100,
+            "support_calls": 2,
+            "payment_delay": 5,
+            "digital_usage": 50,
+        },
+    )
+    assert response.status_code == 422
+
+
+def test_guide_metrics_have_correct_types(client, customer_dataframe):
+    from prometheus_client.parser import text_string_to_metric_families
+
+    assert (
+        client.post("/predict", json=input_record(customer_dataframe)).status_code
+        == 200
+    )
+    families = {
+        m.name: m for m in text_string_to_metric_families(client.get("/metrics").text)
+    }
+    assert families["churn_probability"].type == "gauge"
+    for name in ["monthly_fee", "support_calls", "payment_delay", "digital_usage"]:
+        assert families["churn_input_" + name].type == "histogram"
+
+
+def test_atomic_rollback_preserves_backup_and_archives_active(
+    serving_artifact, tmp_path
+):
+    import hashlib
+    import shutil
+
+    from scripts.rollback_model import rollback
+
+    backup = tmp_path / "v1.joblib"
+    active = tmp_path / "active.joblib"
+    shutil.copy2(serving_artifact[0], backup)
+    active.write_bytes(b"broken-v2")
+    expected = hashlib.sha256(backup.read_bytes()).hexdigest()
+    result = rollback(backup, active)
+    assert result["restored_sha256"] == expected
+    assert hashlib.sha256(active.read_bytes()).hexdigest() == expected
+    assert hashlib.sha256(backup.read_bytes()).hexdigest() == expected
+    assert active.with_name(result["archive"]).read_bytes() == b"broken-v2"

@@ -1,0 +1,13 @@
+{
+  "scenario": "drift",
+  "successful_requests": 50,
+  "seed": 2026,
+  "input_means": {
+    "monthly_fee": 188.40012,
+    "support_calls": 6.76,
+    "last_payment_delay": 31.52,
+    "digital_usage_score": 28.039130434782614
+  },
+  "mean_churn_probability": 0.433206625842135,
+  "limitation": "Synthetic perturbation; no independent ground truth or concept-drift conclusion."
+}

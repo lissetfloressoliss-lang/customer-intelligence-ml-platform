@@ -2,7 +2,7 @@
 
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
 Nonnegative = Annotated[float, Field(ge=0, allow_inf_nan=False)]
 Score = Annotated[float, Field(ge=0, le=100, allow_inf_nan=False)]
@@ -15,12 +15,16 @@ class CustomerInput(BaseModel):
     customer_id: str = Field(min_length=1, max_length=100)
     age: Nonnegative | None
     tenure_months: int = Field(ge=0)
-    monthly_fee: Nonnegative | None
+    monthly_fee: Annotated[float, Field(gt=0, allow_inf_nan=False)] | None
     total_spent: Nonnegative | None
     support_calls: int = Field(ge=0)
     complaints: int = Field(ge=0)
-    last_payment_delay: int = Field(ge=0)
-    digital_usage_score: Score | None
+    last_payment_delay: int = Field(
+        ge=0, validation_alias=AliasChoices("last_payment_delay", "payment_delay")
+    )
+    digital_usage_score: Score | None = Field(
+        validation_alias=AliasChoices("digital_usage_score", "digital_usage")
+    )
     marketing_score: Score | None
     preferred_contact_hour: int = Field(ge=0, le=23)
     gender: Literal["Femenino", "Masculino"] | None
