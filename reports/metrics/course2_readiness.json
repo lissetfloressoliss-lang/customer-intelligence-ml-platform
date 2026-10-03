@@ -33,21 +33,23 @@
   "alert_firing_observed": true,
   "course2_guide_received": true,
   "course1_source_and_model_unchanged": true,
-  "branch_published": false,
+  "branch_published": true,
   "portable_prometheus_scrape_verified": true,
   "local_rollback_executed": true,
-  "container_rollback_verified": false,
+  "container_rollback_verified": true,
   "aws_deployed": false,
   "aws_iam_roles_exist": false,
   "ecr_preflight": "AccessDeniedException",
   "models_in_repository": "Trusted synthetic trained serving artifact and stable copy, with hash/runtime manifest",
   "dependency_lock": "requirements-api-lock.txt for Linux/Python 3.12, with hashes",
   "pending": [
-    "Docker engine running and container/image validation",
     "AWS permission correction and two IAM roles",
     "Explicit authorization to create AWS resources and confirmation of destination account",
     "Cloud HTTPS deployment verification",
-    "Actual container rollback",
     "DMC submission or deadline exception"
-  ]
+  ],
+  "docker_containers_verified_in_github_actions": true,
+  "ci_url": "https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37144265520",
+  "pr_url": "https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/pull/2",
+  "pr_merged": true
 }

@@ -3,6 +3,6 @@
   "synthetic_model_hashes_verified": true,
   "model_sources": "Own Curso 1 pipeline trained on reproducible synthetic dataset",
   "environment_and_tools_excluded": true,
-  "branch_publication": "Pending explicit user approval after automatic review rejection",
+  "branch_publication": "Explicitly authorized by user; published and PR #2 merged after successful checks",
   "limitation": "Pattern scan and known model provenance, not a formal security audit."
 }

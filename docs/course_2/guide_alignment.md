@@ -70,3 +70,7 @@ Región configurada y de la guía: us-east-1. STS confirma identidad IAM, sin pu
 Plan: build Linux amd64 de novatel-churn-api:aws-v1, repositorio ECR privado novatel-churn-api, push por password-stdin, ECS Express Mode con ambos roles y health-check-path /health, validación de HTTPS y cleanup verificando los recursos realmente creados. La guía menciona el DNS del ALB; se debe usar el endpoint HTTPS que Express Mode entregue y comprobar el certificado, no asumir que cualquier DNS ALB tiene TLS válido.
 
 Los roles corresponden a AmazonECSTaskExecutionRolePolicy y AmazonECSInfrastructureRoleforExpressGatewayServices, con relaciones de confianza y permisos PassRole correctos. No se crearon roles, políticas, ECR, ECS, ALB ni otros recursos. No existe URL cloud ni evidencia de CloudWatch/HTTPS. No se ejecutaron los comandos destructivos de cleanup de la guía sobre recursos ajenos o nombres supuestos.
+
+## Verificación Docker posterior y publicación
+
+PR #2 integrado tras checks aprobados. https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37144265520 verificó 33 tests, build y ejecución real Docker Compose, promtool, 50 NORMAL sin alerta y 50 DRIFT con alerta FIRING, target UP y salud tras rollback. Evidencia: reports/metrics/container_verification.json. El modelo restaurado coincide con el inicial; no prueba una mejora de calidad. El bloqueo del motor Windows permanece local; la validación de contenedores se completó en Ubuntu de GitHub Actions. AWS permanece sin desplegar.

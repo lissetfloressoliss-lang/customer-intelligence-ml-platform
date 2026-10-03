@@ -74,9 +74,9 @@ Se verificó `dvc repro --force` con `.venv/Scripts` primero en PATH; ambas etap
 
 ## Límites y publicación
 
-La comparación es exploratoria sobre un único split sintético. Al comparar umbrales en ese split se usa para selección; falta un conjunto final independiente o validación cruzada para confirmar la mejora. Los costos de 50 y 500 son supuestos de la guía, no resultados financieros reales. No hay servicio FastAPI, Docker, AWS ni monitoreo Prometheus: corresponden a una extensión posterior.
+La comparación es exploratoria sobre un único split sintético. Al comparar umbrales en ese split se usa para selección; falta un conjunto final independiente o validación cruzada para confirmar la mejora. Los costos de 50 y 500 son supuestos de la guía, no resultados financieros reales. El Curso 2 agrega FastAPI, Docker y Prometheus; AWS continúa pendiente.
 
-Los artefactos `.joblib`, predicciones, entorno virtual, cachés, herramientas y temporales están excluidos de Git y se regeneran con los comandos anteriores. La revisión de los archivos candidatos, incluidos los notebooks, no detectó claves ni tokens; el correo `correo@example.com` de la guía Git es un ejemplo. El CSV no contiene nombres, correos, teléfonos ni direcciones reales. El análisis por patrones no reemplaza una auditoría de seguridad formal. Los manifiestos originales reflejan la validación histórica del ZIP (9 pruebas), no sustituyen los resultados actuales.
+Los artefactos del Curso 1, predicciones, entorno virtual, cachés, herramientas y temporales están excluidos de Git; el Curso 2 versiona dos copias sintéticas de serving y se regeneran con los comandos anteriores. La revisión de los archivos candidatos, incluidos los notebooks, no detectó claves ni tokens; el correo `correo@example.com` de la guía Git es un ejemplo. El CSV no contiene nombres, correos, teléfonos ni direcciones reales. El análisis por patrones no reemplaza una auditoría de seguridad formal. Los manifiestos originales reflejan la validación histórica del ZIP (9 pruebas), no sustituyen los resultados actuales.
 
 Estado remoto: repositorio público publicado en la cuenta verificada `lissetfloressoliss-lang` de Lisset Flores. Ambas ramas están publicadas y el [PR #1](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/pull/1) fue integrado mediante merge; `main` local se sincronizó con el remoto. [GitHub Actions](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37139590833) aprobó las 12 pruebas en Ubuntu y Python 3.12. La ejecución dentro de Codespaces permanece pendiente y se describe a continuación.
 
@@ -108,4 +108,19 @@ Esta secuencia está documentada para completar el requisito del laboratorio. La
 
 ## Curso 2: serving local
 
-La guía completa se contrastó en [adaptaciones, resultados propios y bloqueos](docs/course_2/guide_alignment.md). Hay 33 tests aprobados, simulación real NORMAL/DRIFT con Prometheus portátil y alerta FIRING, y rollback local con hash comprobado. Docker y AWS siguen pendientes. El [inventario inicial](docs/course_2/materials_and_readiness.md) describe el estado previo a recibir la guía. Los modelos de serving sintéticos están en models/, con manifiesto de versiones; artifacts/models/ conserva el Curso 1.
+La guía completa se contrastó en [adaptaciones, resultados propios y bloqueos](docs/course_2/guide_alignment.md). Hay 33 tests aprobados, simulación real NORMAL/DRIFT con Prometheus portátil y alerta FIRING, y rollback local con hash comprobado. Docker se construyó y ejecutó en GitHub Actions; AWS sigue pendiente. El [inventario inicial](docs/course_2/materials_and_readiness.md) describe el estado previo a recibir la guía. Los modelos de serving sintéticos están en models/, con manifiesto de versiones; artifacts/models/ conserva el Curso 1.
+
+### Verificación real del Curso 2 publicada
+
+El [PR #2](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/pull/2) se integró tras aprobar los checks. La [ejecución Docker en GitHub Actions](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37144265520) aprobó 33 tests, build y salud de los contenedores, reglas promtool, 50 solicitudes NORMAL y 50 DRIFT, target UP, alerta HighAveragePaymentDelay en FIRING y reinicio saludable tras rollback. La [evidencia descargada](reports/metrics/container_verification.json) conserva el resultado real. El backup y el modelo inicial tienen el mismo hash: demuestra el procedimiento de restauración, sin afirmar mejora de un modelo distinto ni degradación predictiva probada.
+
+Para repetir en Codespaces, usar Python 3.12 (perfil `.devcontainer/serving`), instalar `requirements.txt`, `requirements-api.txt` y `requirements-api-dev.txt`, y ejecutar:
+
+```bash
+pytest -v
+docker compose up --build -d --wait
+python scripts/verify_container_monitoring.py
+docker compose down
+```
+
+Codespaces debe disponer de Docker operativo. Estas instrucciones no son evidencia de una ejecución en Codespaces. El daemon local de Windows no respondió; la evidencia Docker procede del runner Ubuntu de Actions. No se crearon recursos AWS: faltan permisos ECR y ambos roles IAM; antes del despliegue se requiere confirmar cuenta y autorizar recursos/costos.

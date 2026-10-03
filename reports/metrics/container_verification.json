@@ -1,0 +1,65 @@
+{
+  "runtime": "Actual Docker Compose containers",
+  "initial_health": {
+    "status": "healthy",
+    "service": "novatel-churn-api",
+    "threshold": 0.45,
+    "model_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d"
+  },
+  "normal": {
+    "scenario": "normal",
+    "successful_requests": 50,
+    "seed": 2026,
+    "input_means": {
+      "monthly_fee": 110.82359999999998,
+      "support_calls": 1.76,
+      "last_payment_delay": 6.52,
+      "digital_usage_score": 70.09782608695652
+    },
+    "mean_churn_probability": 0.41355249249836895,
+    "limitation": "Synthetic perturbation; no independent ground truth or concept-drift conclusion."
+  },
+  "drift": {
+    "scenario": "drift",
+    "successful_requests": 50,
+    "seed": 2026,
+    "input_means": {
+      "monthly_fee": 188.40012,
+      "support_calls": 6.76,
+      "last_payment_delay": 31.52,
+      "digital_usage_score": 28.039130434782614
+    },
+    "mean_churn_probability": 0.433206625842135,
+    "limitation": "Synthetic perturbation; no independent ground truth or concept-drift conclusion."
+  },
+  "normal_alerts": [],
+  "observed_alert": {
+    "labels": {
+      "alertname": "HighAveragePaymentDelay",
+      "severity": "warning"
+    },
+    "annotations": {
+      "description": "Investigate distributions and obtain ground truth before any retraining decision.",
+      "summary": "Observed average payment delay exceeds 15 days"
+    },
+    "state": "firing",
+    "activeAt": "2026-10-03T18:30:01.038394885Z",
+    "value": "2.8666666666666668e+01"
+  },
+  "target_up": true,
+  "rollback": {
+    "restored_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d",
+    "previous_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d",
+    "archive": "churn_pipeline.joblib.before-rollback-afda1dbdbfa5",
+    "requires_restart": true
+  },
+  "health_after_container_restart": {
+    "status": "healthy",
+    "service": "novatel-churn-api",
+    "threshold": 0.45,
+    "model_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d"
+  },
+  "backup_same_as_initial": true,
+  "cloud_deployed": false,
+  "performance_degradation_proven": false
+}
