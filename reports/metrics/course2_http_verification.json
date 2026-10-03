@@ -1,0 +1,18 @@
+{
+  "health": {
+    "status": "healthy",
+    "threshold": 0.45
+  },
+  "prediction_status": 200,
+  "prediction": {
+    "customer_id": "NT-000001",
+    "churn_probability": 0.2293133254429825,
+    "churn_prediction": 0
+  },
+  "metrics_observation_verified": true,
+  "binding": "loopback only",
+  "docker_runtime_verified": false,
+  "prometheus_runtime_verified": false,
+  "alert_firing_verified": false,
+  "aws_deployed": false
+}

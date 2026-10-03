@@ -1,0 +1,10 @@
+groups:
+  - name: novatel-observations
+    rules:
+      - alert: HighAveragePaymentDelay
+        expr: rate(churn_input_last_payment_delay_sum[5m]) / rate(churn_input_last_payment_delay_count[5m]) > 15
+        for: 15s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Average observed payment delay exceeds 15 days; investigate with ground truth."

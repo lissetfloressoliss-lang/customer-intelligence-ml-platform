@@ -1,0 +1,14 @@
+*
+!requirements-api.txt
+!pyproject.toml
+!params.yaml
+!api/
+!api/*.py
+!src/
+!src/**/*.py
+!artifacts/
+!artifacts/models/
+!artifacts/models/churn_pipeline.joblib
+!src/**
+**/__pycache__/
+**/*.pyc

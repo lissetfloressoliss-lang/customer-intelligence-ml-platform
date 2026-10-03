@@ -1,0 +1,37 @@
+{
+  "branch": "feature/fastapi-serving",
+  "base_commit": "3273fc51fc247912a3bc77017d37055c647f80ed",
+  "model_sha256": "63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d",
+  "python_minimum_for_pinned_api": "3.12",
+  "dependencies": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "fastapi": "0.142.2",
+    "starlette": "1.7.0",
+    "pydantic": "2.13.5",
+    "uvicorn": "0.54.0",
+    "prometheus-client": "0.26.0",
+    "python-multipart": "0.0.32",
+    "httpx": "0.28.1"
+  },
+  "pytest_passed": 29,
+  "pytest_warnings": [
+    "Starlette TestClient deprecates httpx in favor of httpx2"
+  ],
+  "docker_cli_available": true,
+  "docker_daemon_available": false,
+  "docker_compose_config_validated": true,
+  "aws_cli_available": true,
+  "aws_sts_identity_verified": true,
+  "aws_profile": "default",
+  "aws_deployment_permissions_verified": false,
+  "aws_resources_created": false,
+  "prometheus_running": false,
+  "alert_firing_observed": false,
+  "course2_guide_received": false,
+  "course1_source_and_model_unchanged": true,
+  "branch_published": false
+}
