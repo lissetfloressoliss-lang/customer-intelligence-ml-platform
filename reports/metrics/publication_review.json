@@ -1,0 +1,17 @@
+{
+  "candidate_files": 82,
+  "findings": [
+    {
+      "file": "README.md",
+      "category": "email"
+    },
+    {
+      "file": "docs/git_dvc/GUIDE_GIT_DVC.md",
+      "category": "email"
+    }
+  ],
+  "missing_docstrings": [],
+  "excluded_directories_verified": true,
+  "synthetic_data": "All values matched the included seed-42 generator; no real customer identifiers, names, phones, addresses or emails in the CSV.",
+  "limitation": "Pattern scan and source review do not constitute a formal security audit."
+}

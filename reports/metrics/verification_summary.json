@@ -1,0 +1,34 @@
+{
+  "python": "3.12.13",
+  "dependencies": {
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "matplotlib": "3.11.2",
+    "PyYAML": "6.0.3",
+    "dvc": "3.67.1",
+    "pytest": "8.4.2"
+  },
+  "pytest_passed": 12,
+  "training_rows": 800,
+  "evaluation_rows": 200,
+  "inference_rows": 1000,
+  "baseline_threshold": 0.5,
+  "source_dataset_reproduced": true,
+  "secrets_pattern_scan": "No credentials found; example email in Git guide only",
+  "workflow_local": true,
+  "workflow_remote_verified": false,
+  "git_author_name": "Lisset Flores",
+  "git_author_email": "337413330+lissetfloressoliss-lang@users.noreply.github.com",
+  "github_authentication": "Not logged in; intended Lisset account must be verified",
+  "dvc_repro": "train and predict passed with venv first in PATH",
+  "dvc_metrics_show": "Blocked by libgit2 ownership validation in execution account; JSON inspected",
+  "pending": [
+    "feature branch and requested commit at 0.45",
+    "publish both branches in verified Lisset account",
+    "create and merge PR",
+    "synchronize main"
+  ],
+  "intended_github_account": "lissetfloressoliss-lang"
+}

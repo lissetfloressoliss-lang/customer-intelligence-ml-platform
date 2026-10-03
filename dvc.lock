@@ -1,0 +1,91 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python main.py train --data data/raw/customer_churn.csv --model-output
+      artifacts/models/churn_pipeline.joblib --metrics-output
+      reports/metrics/training_metrics.json
+    deps:
+    - path: data/raw/customer_churn.csv
+      hash: md5
+      md5: 47d673619ec60305f27bc313928eb2c2
+      size: 116545
+    - path: main.py
+      hash: md5
+      md5: ad1f76c9a3a47617030607620dfd1f08
+      size: 3497
+    - path: src/data
+      hash: md5
+      md5: a90e347ee2206fc0c5bafc07ac65cbdf.dir
+      size: 6101
+      nfiles: 4
+    - path: src/features
+      hash: md5
+      md5: 78fb19d896181d9435514e16c67ab3c5.dir
+      size: 5246
+      nfiles: 3
+    - path: src/models
+      hash: md5
+      md5: 465fb014aba95b6853e716c9984a4099.dir
+      size: 8160
+      nfiles: 5
+    - path: src/utils
+      hash: md5
+      md5: 9ea8eeec930e72ff107dd53e5fb2c825.dir
+      size: 3767
+      nfiles: 5
+    params:
+      params.yaml:
+        model.algorithm: logistic_regression
+        model.class_weight: balanced
+        model.max_iter: 1000
+        training.random_state: 42
+        training.test_size: 0.2
+    outs:
+    - path: artifacts/models/churn_pipeline.joblib
+      hash: md5
+      md5: e70835139e8b9d2571e7363933160387
+      size: 7002
+    - path: reports/metrics/training_metrics.json
+      hash: md5
+      md5: ef6e6c13f62bfedafe13107f1cf53561
+      size: 217
+  predict:
+    cmd: python main.py predict --data data/raw/customer_churn.csv --model
+      artifacts/models/churn_pipeline.joblib --output
+      reports/predictions/customer_predictions.csv --threshold 0.5
+    deps:
+    - path: artifacts/models/churn_pipeline.joblib
+      hash: md5
+      md5: e70835139e8b9d2571e7363933160387
+      size: 7002
+    - path: data/raw/customer_churn.csv
+      hash: md5
+      md5: 47d673619ec60305f27bc313928eb2c2
+      size: 116545
+    - path: main.py
+      hash: md5
+      md5: ad1f76c9a3a47617030607620dfd1f08
+      size: 3497
+    - path: src/features
+      hash: md5
+      md5: 78fb19d896181d9435514e16c67ab3c5.dir
+      size: 5246
+      nfiles: 3
+    - path: src/models
+      hash: md5
+      md5: 465fb014aba95b6853e716c9984a4099.dir
+      size: 8160
+      nfiles: 5
+    - path: src/utils
+      hash: md5
+      md5: 9ea8eeec930e72ff107dd53e5fb2c825.dir
+      size: 3767
+      nfiles: 5
+    params:
+      params.yaml:
+        prediction.threshold: 0.5
+    outs:
+    - path: reports/predictions/customer_predictions.csv
+      hash: md5
+      md5: 9a3339fe11879e84f43ad41b73bd2629
+      size: 32300
