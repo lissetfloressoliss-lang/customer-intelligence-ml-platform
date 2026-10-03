@@ -20,5 +20,7 @@
   "cost_actual": "Not available; billing not queried",
   "budget_usd": 1,
   "cost_assessment": "Short failed attempt, no observed running tasks. Expected below USD 1; not a billing guarantee. Unverified resource inventory prevents full cost closure.",
-  "required_admin_step": "Inspect CloudTrail around 2026-10-03 21:31:03\u201321:31:17 UTC for Express provisioning AccessDenied and exact denied action/resource; inspect residual ALB/logs and permissions boundary/SCP. Do not attach AdministratorAccess."
+  "required_admin_step": "Inspect CloudTrail around 2026-10-03 21:31:03\u201321:31:17 UTC for Express provisioning AccessDenied and exact denied action/resource; inspect residual ALB/logs and permissions boundary/SCP. Do not attach AdministratorAccess.",
+  "service_inactive": true,
+  "task_definition_cleanup_completed": false
 }
