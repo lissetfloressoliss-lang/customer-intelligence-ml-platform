@@ -1,4 +1,4 @@
-# Curso 2: materiales, compatibilidad y estado local
+# Módulo II: materiales, compatibilidad y estado local
 
 Fecha: 3 de octubre de 2026. Búsqueda en toda la carpeta del curso, conservando los originales. La guía completa del segundo trabajo aún no fue suministrada; esta implementación inicial sigue las presentaciones disponibles y deberá contrastarse con esa guía.
 
@@ -12,15 +12,15 @@ Raíz de búsqueda: `D:\6. 2026\Cursos\202609 DMC_ML Engineering & MLOp`.
 | Docker y Prometheus, sesión 7 | `s7\01. Descubre\S7_Contenerizacion-de-una-API-ML-con-Docker.pptx` |
 | AWS, sesión 8 | `s8\Material sesión 08-20261003\01. Descubre\Curso 2 S8 – Despliegue y mantenimiento automatizado de modelos.pptx` |
 | Monitoreo y mantenimiento, sesión 9 | `s9\Material sesión 09-20261003\01. Descubre\C2_S9 - Monitoring.pptx` |
-| ZIP base del Curso 1 | `s1\02. Explora\entregable_D3_16_repositorio_final_curso_1.zip` |
-| Guía del Curso 1 | `modulo I\Guía Práctica de Laboratorio.docx` |
+| ZIP base del Módulo I | `s1\02. Explora\entregable_D3_16_repositorio_final_curso_1.zip` |
+| Guía del Módulo I | `modulo I\Guía Práctica de Laboratorio.docx` |
 | Referencia al repositorio | `modulo I\link del repositorio de github.docx` |
 
-Las carpetas s6–s9 también contienen grabaciones y transcripciones. No se encontraron ZIP, notebooks, scripts Python, Dockerfiles ni modelos joblib independientes del Curso 2 en la carpeta del curso. El ZIP disponible corresponde al Curso 1 y la copia extraída contiene sus seis notebooks, módulos, dataset y el joblib generado localmente. No se modificaron originales ni se copiaron resultados de las diapositivas como evidencia propia.
+Las carpetas s6–s9 también contienen grabaciones y transcripciones. No se encontraron ZIP, notebooks, scripts Python, Dockerfiles ni modelos joblib independientes del Módulo II en la carpeta del curso. El ZIP disponible corresponde al Módulo I y la copia extraída contiene sus seis notebooks, módulos, dataset y el joblib generado localmente. No se modificaron originales ni se copiaron resultados de las diapositivas como evidencia propia.
 
 ## Base y contrato real
 
-Se extendió el repositorio NovaTel existente en la rama local `feature/fastapi-serving`, desde `main` del Curso 1 (`3273fc5`). El entrenamiento, parámetros, dataset, notebooks y código de inferencia del Curso 1 se conservan. No se publicó ni integró esta nueva rama.
+Se extendió el repositorio NovaTel existente en la rama local `feature/fastapi-serving`, desde `main` del Módulo I (`3273fc5`). El entrenamiento, parámetros, dataset, notebooks y código de inferencia del Módulo I se conservan. No se publicó ni integró esta nueva rama.
 
 Artefacto: `artifacts/models/churn_pipeline.joblib`, Pipeline con preprocesador y regresión logística, clases [0, 1]. SHA256: `63eb7a8fae5719eb69ae3a109ec3eaafe1b21679f3e8f176a84362ecb5883f6d`.
 
@@ -36,9 +36,9 @@ Variables categóricas requeridas:
 
 ## Dependencias y diferencias
 
-NumPy 2.5.3 y SciPy 1.18.1 declaran Python >=3.12; por tanto el serving fijado requiere Python >=3.12, aunque el Curso 1 declare >=3.11. Se añade `.devcontainer/serving/devcontainer.json` para Python 3.12 sin cambiar el perfil original 3.11. Seleccionar este perfil para Curso 2; no instalar estas versiones API en el perfil 3.11.
+NumPy 2.5.3 y SciPy 1.18.1 declaran Python >=3.12; por tanto el serving fijado requiere Python >=3.12, aunque el Módulo I declare >=3.11. Se añade `.devcontainer/serving/devcontainer.json` para Python 3.12 sin cambiar el perfil original 3.11. Seleccionar este perfil para Módulo II; no instalar estas versiones API en el perfil 3.11.
 
-El artefacto local carga sin advertencias de versión con Python 3.12.13, scikit-learn 1.9.1, numpy 2.5.3, pandas 2.3.3, joblib 1.6.0 y scipy 1.18.1. `requirements-api.txt` fija estas versiones reales y las dependencias API. Se conservan las listas originales del Curso 1; se añade `requirements-api-dev.txt` para pruebas HTTP y se adapta el workflow para instalarlas.
+El artefacto local carga sin advertencias de versión con Python 3.12.13, scikit-learn 1.9.1, numpy 2.5.3, pandas 2.3.3, joblib 1.6.0 y scipy 1.18.1. `requirements-api.txt` fija estas versiones reales y las dependencias API. Se conservan las listas originales del Módulo I; se añade `requirements-api-dev.txt` para pruebas HTTP y se adapta el workflow para instalarlas.
 
 La presentación Docker usa scikit-learn 1.9.0, numpy 2.5.1 y joblib 1.5.3. Esas versiones difieren de nuestro artefacto y no se copiaron. Cargar modelos scikit-learn entre versiones diferentes no es una compatibilidad garantizada; la API convierte InconsistentVersionWarning en error de arranque. No carga artefactos aportados por usuarios.
 
@@ -80,4 +80,4 @@ Prometheus se configura para consultar `api:8000/metrics` cada 15 segundos. La r
 
 ## Resultados propios verificados
 
-29 pruebas aprobadas (12 del Curso 1 y 17 de serving); una advertencia de TestClient/httpx, sin fallos. Ruff aprobado (E4/E7/E9/F/I), dependencias compatibles según `uv pip check`, Compose válido según `docker compose config --quiet`. API Uvicorn real en loopback: /health HTTP 200, /predict HTTP 200, umbral 0.45 y métricas de una inferencia comprobadas. El servidor se detuvo al terminar. Evidencia en `reports/metrics/course2_http_verification.json` y `course2_readiness.json`.
+29 pruebas aprobadas (12 del Módulo I y 17 de serving); una advertencia de TestClient/httpx, sin fallos. Ruff aprobado (E4/E7/E9/F/I), dependencias compatibles según `uv pip check`, Compose válido según `docker compose config --quiet`. API Uvicorn real en loopback: /health HTTP 200, /predict HTTP 200, umbral 0.45 y métricas de una inferencia comprobadas. El servidor se detuvo al terminar. Evidencia en `reports/metrics/course2_http_verification.json` y `course2_readiness.json`.

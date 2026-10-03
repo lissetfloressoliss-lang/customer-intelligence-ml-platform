@@ -1,4 +1,4 @@
-# Repositorio final — Curso 1
+# Repositorio final — Módulo I
 
 ## Del desarrollo de modelos a Machine Learning Engineering
 
@@ -62,7 +62,7 @@ dvc repro
 dvc metrics show
 ```
 
-## Próximo curso
+## Módulo II
 
 Este repositorio será extendido con FastAPI, Docker, AWS y Prometheus sin
 reemplazar el pipeline central.

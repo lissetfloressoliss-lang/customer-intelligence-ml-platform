@@ -74,9 +74,9 @@ Se verificó `dvc repro --force` con `.venv/Scripts` primero en PATH; ambas etap
 
 ## Límites y publicación
 
-La comparación es exploratoria sobre un único split sintético. Al comparar umbrales en ese split se usa para selección; falta un conjunto final independiente o validación cruzada para confirmar la mejora. Los costos de 50 y 500 son supuestos de la guía, no resultados financieros reales. El Curso 2 agrega FastAPI, Docker y Prometheus; AWS continúa pendiente.
+La comparación es exploratoria sobre un único split sintético. Al comparar umbrales en ese split se usa para selección; falta un conjunto final independiente o validación cruzada para confirmar la mejora. Los costos de 50 y 500 son supuestos de la guía, no resultados financieros reales. El Módulo II agrega FastAPI, Docker y Prometheus; AWS continúa pendiente.
 
-Los artefactos del Curso 1, predicciones, entorno virtual, cachés, herramientas y temporales están excluidos de Git; el Curso 2 versiona dos copias sintéticas de serving y se regeneran con los comandos anteriores. La revisión de los archivos candidatos, incluidos los notebooks, no detectó claves ni tokens; el correo `correo@example.com` de la guía Git es un ejemplo. El CSV no contiene nombres, correos, teléfonos ni direcciones reales. El análisis por patrones no reemplaza una auditoría de seguridad formal. Los manifiestos originales reflejan la validación histórica del ZIP (9 pruebas), no sustituyen los resultados actuales.
+Los artefactos del Módulo I, predicciones, entorno virtual, cachés, herramientas y temporales están excluidos de Git; el Módulo II versiona dos copias sintéticas de serving y se regeneran con los comandos anteriores. La revisión de los archivos candidatos, incluidos los notebooks, no detectó claves ni tokens; el correo `correo@example.com` de la guía Git es un ejemplo. El CSV no contiene nombres, correos, teléfonos ni direcciones reales. El análisis por patrones no reemplaza una auditoría de seguridad formal. Los manifiestos originales reflejan la validación histórica del ZIP (9 pruebas), no sustituyen los resultados actuales.
 
 Estado remoto: repositorio público publicado en la cuenta verificada `lissetfloressoliss-lang` de Lisset Flores. Ambas ramas están publicadas y el [PR #1](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/pull/1) fue integrado mediante merge; `main` local se sincronizó con el remoto. [GitHub Actions](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37139590833) aprobó las 12 pruebas en Ubuntu y Python 3.12. La ejecución dentro de Codespaces permanece pendiente y se describe a continuación.
 
@@ -106,11 +106,11 @@ Se esperan 12 tests aprobados y un dataset de 1000 filas, 21 columnas, 256 nulos
 
 Esta secuencia está documentada para completar el requisito del laboratorio. La ejecución local y GitHub Actions no equivalen a ejecutar un Codespace; conservar la salida de la terminal como evidencia del paso realizado en Codespaces. Detener el Codespace al terminar desde su menú de administración.
 
-## Curso 2: serving local
+## Módulo II: serving local
 
-La guía completa se contrastó en [adaptaciones, resultados propios y bloqueos](docs/course_2/guide_alignment.md). Hay 33 tests aprobados, simulación real NORMAL/DRIFT con Prometheus portátil y alerta FIRING, y rollback local con hash comprobado. Docker se construyó y ejecutó en GitHub Actions; AWS sigue pendiente. El [inventario inicial](docs/course_2/materials_and_readiness.md) describe el estado previo a recibir la guía. Los modelos de serving sintéticos están en models/, con manifiesto de versiones; artifacts/models/ conserva el Curso 1.
+La guía completa se contrastó en [adaptaciones, resultados propios y bloqueos](docs/course_2/guide_alignment.md). Hay 33 tests aprobados, simulación real NORMAL/DRIFT con Prometheus portátil y alerta FIRING, y rollback local con hash comprobado. Docker se construyó y ejecutó en GitHub Actions; AWS sigue pendiente. El [inventario inicial](docs/course_2/materials_and_readiness.md) describe el estado previo a recibir la guía. Los modelos de serving sintéticos están en models/, con manifiesto de versiones; artifacts/models/ conserva el Módulo I.
 
-### Verificación real del Curso 2 publicada
+### Verificación real del Módulo II publicada
 
 El [PR #2](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/pull/2) se integró tras aprobar los checks. La [ejecución Docker en GitHub Actions](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/actions/runs/37144265520) aprobó 33 tests, build y salud de los contenedores, reglas promtool, 50 solicitudes NORMAL y 50 DRIFT, target UP, alerta HighAveragePaymentDelay en FIRING y reinicio saludable tras rollback. La [evidencia descargada](reports/metrics/container_verification.json) conserva el resultado real. El backup y el modelo inicial tienen el mismo hash: demuestra el procedimiento de restauración, sin afirmar mejora de un modelo distinto ni degradación predictiva probada.
 
@@ -137,6 +137,6 @@ Un único reintento autorizado el 3 de octubre de 2026 llegó a COMPLETED con un
 
 Comprobación posterior de cierre: el servicio ya está INACTIVE; ambos security groups nuevos están ausentes y RollbackAlarm no aparece. ECR permanece eliminado y el clúster INACTIVE. La revisión :2 sigue ACTIVE; ALB/targets/Auto Scaling/logs requieren inspección del administrador por denegaciones de lectura. No se afirma limpieza total. [Comprobación de cierre](reports/metrics/aws_lab_retry/closure_check.json).
 
-## Auditoría final del Curso 2
+## Auditoría final del Módulo II
 
 [Tabla completa contra la guía y requisitos pendientes](docs/course_2/final_audit.md). El administrador confirmó manualmente en us-east-1 ausencia de ALB/target groups y eliminación de ambos grupos de logs NovaTel; /aws-glue/crawlers se conservó. Esta confirmación no es una consulta API. Auto Scaling y desregistro de revisiones siguen pendientes. La guía pide cleanup tras validar HTTPS y entrega del enlace público del repositorio, no un endpoint permanente. No hay evidencia de envío DMC en plazo.

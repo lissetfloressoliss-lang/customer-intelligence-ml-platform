@@ -1,4 +1,4 @@
-# Release notes — v1.0 Curso 1
+# Release notes — v1.0 Module I
 
 ## Incluye
 

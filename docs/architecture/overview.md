@@ -15,4 +15,4 @@ reports/predictions
 ```
 
 Los componentes de FastAPI, Docker, AWS y Prometheus se agregarán en el
-segundo curso sin reemplazar los módulos centrales.
+Módulo II sin reemplazar los módulos centrales.

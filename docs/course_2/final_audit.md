@@ -1,10 +1,10 @@
-# Auditoría final Curso 2 — 3 de octubre de 2026
+# Auditoría final Módulo II — 3 de octubre de 2026
 
 Fuente obligatoria: guía completa recibida en Texto pegado.txt. Auditoría documental del código y evidencias existentes: no se repitieron tests ni despliegues. Cumple significa resultado funcional acreditado; parcial identifica una diferencia literal o una comprobación incompleta.
 
 | Requisito | Evidencia | Estado | Limitación |
 | --- | --- | --- | --- |
-| Caso NovaTel y conservación Curso 1 | README.md; src/; artifacts/models/; models/manifest.json | cumple | Datos sintéticos; no calidad real de producción. |
+| Caso NovaTel y conservación Módulo I | README.md; src/; artifacts/models/; models/manifest.json | cumple | Datos sintéticos; no calidad real de producción. |
 | Rama feature/fastapi-serving, commit docente y PR hacia main | [PR #2](https://github.com/lissetfloressoliss-lang/customer-intelligence-ml-platform/pull/2); commit a5c59c2 | cumple | PR integrado; documentación posterior consolidada en main. |
 | Repositorio público y estructura api/, models/, tests/ | api/; models/; tests/test_api.py; GitHub público | cumple | Raíz del repositorio existente, no carpeta novatel-churn nueva. |
 | Dependencias fijas exactas del ejemplo | requirements-api.txt; requirements-api-lock.txt; models/manifest.json | parcial | Versiones distintas por compatibilidad del artefacto: sklearn 1.9.1 y joblib 1.6.0; lock Linux/Python 3.12 con hashes. No se afirma reproducción de versiones docentes. |
@@ -37,4 +37,4 @@ Auto Scaling: confirmar ausencia de service/novatel-lab/novatel-churn-api, names
 
 ## Requisitos pendientes y diferencias
 
-Obligatorio sin evidencia: envío oficial DMC en plazo. Cleanup aún incompleto en comprobación. Diferencias literales a aceptar: versiones/modelo real, schema de 18 features, tag ECR distinto y PromQL corregido. No justifica otro despliegue para renombrar un tag ya retirado. Codespaces pertenece a la solicitud previa del Curso 1; no figura como requisito del Curso 2 en esta guía. Prometheus cloud, rollback cloud, MFA y rotación no cuentan con evidencias propias; no se inventan.
+Obligatorio sin evidencia: envío oficial DMC en plazo. Cleanup aún incompleto en comprobación. Diferencias literales a aceptar: versiones/modelo real, schema de 18 features, tag ECR distinto y PromQL corregido. No justifica otro despliegue para renombrar un tag ya retirado. Codespaces pertenece a la solicitud previa del Módulo I; no figura como requisito del Módulo II en esta guía. Prometheus cloud, rollback cloud, MFA y rotación no cuentan con evidencias propias; no se inventan.

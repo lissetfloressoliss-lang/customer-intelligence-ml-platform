@@ -1,8 +1,8 @@
 > Estado histórico de implementación. Para el estado final, despliegue AWS y cierre, consultar [auditoría final](final_audit.md). Las afirmaciones anteriores sobre roles ausentes o AWS pendiente quedaron superadas por las evidencias posteriores.
 
-# Curso 2: contraste con la guía y resultados propios
+# Módulo II: contraste con la guía y resultados propios
 
-Guía recibida como texto adjunto el 3 de octubre de 2026. La base es el repositorio NovaTel existente y su pipeline persistido del Curso 1. Se conserva el modelo original en artifacts/models/; serving usa copias confiables en models/.
+Guía recibida como texto adjunto el 3 de octubre de 2026. La base es el repositorio NovaTel existente y su pipeline persistido del Módulo I. Se conserva el modelo original en artifacts/models/; serving usa copias confiables en models/.
 
 ## Adaptaciones necesarias
 
@@ -23,7 +23,7 @@ Fuentes: [histogramas Prometheus](https://prometheus.io/docs/practices/histogram
 
 ## Pruebas y evidencia
 
-33 tests pytest aprobados, conservando las 12 pruebas del Curso 1; una advertencia de TestClient/httpx. Ruff aprobado. Compose válido. promtool check rules y test rules aprobaron casos NORMAL y alerta FIRING.
+33 tests pytest aprobados, conservando las 12 pruebas del Módulo I; una advertencia de TestClient/httpx. Ruff aprobado. Compose válido. promtool check rules y test rules aprobaron casos NORMAL y alerta FIRING.
 
 Experimento propio con Prometheus 3.5.0 portátil en Windows y Uvicorn local, 50 peticiones por escenario, mismos clientes sintéticos muestreados con semilla 2026:
 
